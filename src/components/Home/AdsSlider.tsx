@@ -38,7 +38,7 @@ const AdsSlider = ({
             <SwiperSlide className='p-2 h-full' key={e.id}>
               <Link href={e.link}>
                 <Image
-                  className='h-[250px] md:h-[400px] lg:h-[600px] 2xl:h-[700px] rounded-2xl object-cover'
+                  className='h-[250px] md:h-[400px] lg:h-[600px] 2xl:h-[650px] mx-auto  2xl:w-11/12 rounded-2xl object-cover'
                   width={1800}
                   height={900}
                   src={e.image}

@@ -4,6 +4,7 @@ import { Button } from '../ui/button';
 import { CalDiscount } from '@/app/utils/calDiscount';
 import { cn } from '@/lib/utils';
 import { Star } from 'lucide-react';
+import Link from 'next/link';
 
 const ProductCard = ({
   product,
@@ -19,13 +20,18 @@ const ProductCard = ({
         className,
       )}
     >
-      <Image
-        className='mx-auto h-7/12 w-auto'
-        src={product.image}
-        alt={product.name}
-        width={512}
-        height={512}
-      />
+      <Link
+        className='mx-auto my-auto w-auto h-7/12'
+        href={`/products/${product.id}`}
+      >
+        <Image
+          className='h-full w-full'
+          src={product.image}
+          alt={product.name}
+          width={512}
+          height={512}
+        />
+      </Link>
       <h2 className='text-lg font-normal'>{product.name}</h2>
       <p
         className={`${product.discount > 0 && ''} text-dark-100 line mt-4 font-[vazir] text-lg`}
@@ -48,12 +54,12 @@ const ProductCard = ({
         مشاهده
       </Button>
       {product.discount > 0 && (
-        <p className='absolute top-4 w-fit right-4 rounded-lg bg-red-500 p-0.5 px-1 font-[vazir] text-sm text-white'>
+        <p className='absolute top-4 right-4 w-fit rounded-lg bg-red-500 p-0.5 px-1 font-[vazir] text-sm text-white'>
           {product.discount}% تخفیف
         </p>
       )}
-      <p className='flex-center gap-1 font-[vazir] text-sm absolute top-6/12 left-2 bg-white p-1 px-2 border border-zinc-100 rounded-full'>
-         {product.rating}
+      <p className='flex-center absolute top-6/12 left-2 gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 font-[vazir] text-sm'>
+        {product.rating}
         <Star fill='#FA8618' className='text-primary-100' size={24} />
       </p>
     </div>

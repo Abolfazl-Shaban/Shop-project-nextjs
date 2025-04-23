@@ -4,16 +4,29 @@ import { axiosInstance } from '@/app/service/axios';
 import { Product } from '@/components/Product/Product.type';
 import Filter from '@/components/store/Filter';
 import Order from '@/components/store/Order';
+import Pagination from '@/components/store/Pagination';
 import Products from '@/components/store/Products';
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 import { LucideFilter } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 const ProductsPage = () => {
-  const [products, setProducts] = useState<Product[] | undefined>(undefined);
+  const [products, setProducts] = useState<
+    | {
+        data: Product[];
+        meta: { currentPage: number; totalPages: number; totalItems: number };
+      }
+    | undefined
+  >(undefined);
   const [categories, setCategories] = useState(undefined);
   const [brands, setBrands] = useState(undefined);
+  const [priceRange, setPriceRange] = useState(undefined);
 
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -25,6 +38,9 @@ const ProductsPage = () => {
 
   const updateParams = useCallback(
     (key: string, value: string | number | undefined) => {
+      if(value != 'page'){ 
+        params.delete('page');
+      }
       if (value) {
         params.set(key, value.toString());
       } else {
@@ -40,16 +56,18 @@ const ProductsPage = () => {
     fetchData();
 
     async function fetchData() {
-      const [cats, brs, prods] = await Promise.all([
+      const [cats, brs, prods, price] = await Promise.all([
         axiosInstance.get('/products/categories'),
         axiosInstance.get('/products/brands'),
-        axiosInstance.get('/products'),
+        axiosInstance.get('/products?' + params.toString()),
+        axiosInstance.get('/products/pricerange'),
       ]);
       setCategories(cats.data);
       setBrands(brs.data);
       setProducts(prods.data);
+      setPriceRange(price.data);
     }
-  }, []);
+  }, [params]);
 
   return (
     <>
@@ -59,7 +77,7 @@ const ProductsPage = () => {
             <Filter
               categories={categories}
               brands={brands}
-              products={products}
+              priceRnage={priceRange}
               updateParams={updateParams}
             />
           )}
@@ -68,9 +86,9 @@ const ProductsPage = () => {
           <div className='mb-2 flex items-center gap-2'>
             <Sheet>
               <SheetTrigger className='md:hidden'>
-                <div className='bg-primary-100 rounded-lg text-sm font-medium flex gap-2 items-center text-white p-3'>
-                <LucideFilter className='size-7' />
-                <span className=''>فیلتر ها</span>
+                <div className='bg-primary-100 flex items-center gap-2 rounded-lg p-3 text-sm font-medium text-white'>
+                  <LucideFilter className='size-7' />
+                  <span className=''>فیلتر ها</span>
                 </div>
               </SheetTrigger>
               <SheetContent>
@@ -79,15 +97,23 @@ const ProductsPage = () => {
                   <Filter
                     categories={categories}
                     brands={brands}
-                    products={products}
+                    priceRnage={priceRange}
                     updateParams={updateParams}
                   />
                 )}
               </SheetContent>
             </Sheet>
-            <Order className='not-md:hidden bg-zinc-100 p-3' updateParams={updateParams} />
+            <Order
+              className='bg-zinc-100 p-3 not-md:hidden'
+              updateParams={updateParams}
+            />
           </div>
-          <Products products={products} />
+          <Products products={products?.data} />
+          {products?.meta && 
+          <Pagination totalPages={products?.meta.totalPages} currentPage={Number(params.get('page') || 1)} onPageChange={(num)=>{
+            updateParams('page', num);
+          }} />
+          }
         </div>
       </div>
     </>

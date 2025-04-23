@@ -17,7 +17,7 @@ export default function Home() {
     async function featchData() {
       setFeaturedProducts((await axiosInstance.get('/featuredProducts')).data);
       setSliderItems((await axiosInstance.get('/sliderItems')).data);
-      setProducts((await axiosInstance.get('/products')).data);
+      setProducts((await axiosInstance.get('/products')).data.data);
     }
   }, []);
 

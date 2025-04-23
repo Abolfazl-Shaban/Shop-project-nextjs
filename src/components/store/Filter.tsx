@@ -10,9 +10,7 @@ import {
   SelectValue,
 } from '../ui/select';
 import { Button } from '../ui/button';
-import { useEffect, useMemo, useState } from 'react';
-import { Product } from '../Product/Product.type';
-import { getPriceRange } from '@/app/utils/getRangePrice';
+import { useEffect, useState } from 'react';
 import { Category } from '../Product/Category.type';
 import { Brand } from '../Product/Brand.type';
 import { Checkbox } from '../ui/checkbox';
@@ -22,12 +20,12 @@ import { XIcon } from 'lucide-react';
 import Order from './Order';
 
 const Filter = ({
-  products,
+  priceRnage,
   categories,
   brands,
   updateParams,
 }: {
-  products: Product[];
+  priceRnage: number[] | undefined;
   categories: Category[] | undefined;
   brands: Brand[] | undefined;
   updateParams: (key: string, value: string | number | undefined) => void;
@@ -37,14 +35,14 @@ const Filter = ({
   const order = searchParams.get('order');
 
   const priceToStr = searchParams.get('price_to');
-  const priceّFromStr = searchParams.get('price_from');
+  const priceFromStr = searchParams.get('price_from');
   const brandsParams = searchParams.get('brands')?.split('_') || [];
 
   const [selectedBrands, setSelectedBrands] = useState<string[]>(brandsParams);
-  const defaultRange = useMemo(() => getPriceRange(products), [products]);
+  const defaultRange = priceRnage!;
 
   const [priceRange, setPriceRange] = useState([
-    priceّFromStr ? Number(priceّFromStr) : defaultRange[0],
+    priceFromStr ? Number(priceFromStr) : defaultRange[0],
     priceToStr ? Number(priceToStr) : defaultRange[1],
   ]);
   const [category, setCategory] = useState<string>(
@@ -54,9 +52,8 @@ const Filter = ({
   const router = useRouter();
 
   useEffect(() => {
-    const [min, max] = getPriceRange(products);
-    setPriceRange([min, max]);
-  }, [products]);
+    setPriceRange(defaultRange);
+  }, [defaultRange]);
 
   return (
     <>

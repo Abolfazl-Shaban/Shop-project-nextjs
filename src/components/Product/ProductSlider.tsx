@@ -1,15 +1,18 @@
+'use client'
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Product } from './Product.type';
 import ProductCard from './ProductCard';
 import { Autoplay } from 'swiper/modules';
 import ProductSkeleton from './ProductSkeleton';
 
+import 'swiper/css';
+
 const ProductSlider = ({ products }: { products: Product[] | null }) => {
   return (
     <div className='flex items-center gap-2'>
       <Swiper
         loop
-        slidesPerView={1}
         modules={[Autoplay]}
         autoplay={{
           delay: 3000
@@ -25,7 +28,7 @@ const ProductSlider = ({ products }: { products: Product[] | null }) => {
         {products ? (
           products.map((p) => (
             <SwiperSlide key={p.id} className='mx-auto p-1'>
-              <ProductCard className='mx-auto' product={p} />
+              <ProductCard className='mx-auto ' product={p} />
             </SwiperSlide>
           ))
         ) : (

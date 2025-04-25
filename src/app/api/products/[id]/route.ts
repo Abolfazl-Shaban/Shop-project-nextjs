@@ -10,7 +10,7 @@ export async function GET(
   const product = products.find((f) => f.id === Number(id));
 
   if (!product) {
-    return Response.json({ message: 'Product not found' }, { status: 404 });
+    return Response.json(null);
   }
 
   return Response.json(product);

@@ -16,12 +16,12 @@ const ProductCard = ({
   return (
     <div
       className={cn(
-        `relative flex h-[320px] min-w-[260px] flex-col items-start rounded-lg border border-zinc-200 bg-white p-4 pt-1 shadow`,
+        `relative flex h-[320px] w-[340px] flex-col items-start rounded-lg border border-zinc-200 bg-white p-4 pt-1 shadow`,
         className,
       )}
     >
       <Link
-        className='mx-auto my-auto w-auto h-7/12'
+        className='mx-auto my-auto h-7/12 w-auto'
         href={`/products/${product.id}`}
       >
         <Image
@@ -34,15 +34,17 @@ const ProductCard = ({
       </Link>
       <h2 className='text-lg font-normal'>{product.name}</h2>
       <p
-        className={`${product.discount > 0 && ''} text-dark-100 line mt-4 font-[vazir] text-lg`}
+        className={`${(!product.discount || product.discount == 0) && 'hidden'} text-dark-100 line mt-1 font-[vazir] text-lg`}
       >
         {CalDiscount(product.price, product.discount).toLocaleString()}{' '}
         <span className='text-sm font-medium'>تومان</span>
       </p>
       <p
-        className={`${product.discount == 0 && 'hidden'} font-[vazir] text-base text-zinc-600`}
+        className={`${(product.discount && product.discount > 0) ? 'text-base text-zinc-600' : 'text-lg mt-4'} font-[vazir]  `}
       >
-        <span className='font-[vazir] line-through'>
+        <span
+          className={`${product.discount && product.discount > 0 && 'line-through'} font-[vazir]`}
+        >
           {product.price.toLocaleString()}
         </span>
         <span className='text-sm font-medium'> تومان</span>

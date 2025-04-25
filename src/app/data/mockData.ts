@@ -82,6 +82,65 @@ export const productsData = {
       image: `/images/product-sample-${(i % 5) + 1}.png`,
       rating: (Math.random() * 1 + 4).toFixed(1),
       category: ['electric', 'clothing', 'kitchen'][i % 3],
-      brand: ['1','2','3'][i % 3],
+      brand: ['1', '2', '3'][i % 3],
     })),
+};
+
+export const productDetail = {
+  id: 101,
+  name: 'لپ‌تاپ ایسوس مدل X543',
+  price: 25000000,
+  discount: 15,
+  finalPrice: 21250000,
+  images: [
+    '/images/product-detail-1.jpg',
+    '/images/product-detail-2.jpg',
+    '/images/product-detail-3.jpg',
+  ],
+  rating: 4.5,
+  reviewCount: 24,
+  description:
+    'لپ‌تاپ ایسوس با پردازنده Core i7 نسل ۱۱، ۱۶ گیگابایت رم و ۵۱۲ گیگابایت SSD',
+  specifications: [
+    {
+      title: 'پردازنده',
+      value: 'Core i7 1165G7',
+    },
+    {
+      title: 'حافظه رم',
+      value: '16GB DDR4',
+    },
+    {
+      title: 'ذخیره‌سازی',
+      value: '512GB SSD',
+    },
+    {
+      title: 'صفحه نمایش',
+      value: '15.6 اینچ Full HD',
+    },
+    {
+      title: 'سیستم عامل',
+      value: 'Windows 11 Home',
+    },
+  ],
+  relatedProducts: [
+    {
+      id: 103,
+      name: 'لپ‌تاپ دل',
+      price: 28000000,
+      image: '/images/products/laptop.png',
+    },
+    {
+      id: 104,
+      name: 'لپ‌تاپ لنوو',
+      price: 23000000,
+      image: '/images/products/laptop.png',
+    },
+    {
+      id: 105,
+      name: 'لپ‌تاپ ایسوس',
+      price: 32000000,
+      image: '/images/products/laptop.png',
+    },
+  ],
 };

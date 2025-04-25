@@ -1,4 +1,5 @@
 'use client';
+
 import { Slider } from '../ui/slider';
 import {
   Select,
@@ -10,7 +11,7 @@ import {
   SelectValue,
 } from '../ui/select';
 import { Button } from '../ui/button';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Category } from '../Product/Category.type';
 import { Brand } from '../Product/Brand.type';
 import { Checkbox } from '../ui/checkbox';
@@ -18,22 +19,23 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { LuSettings2 } from 'react-icons/lu';
 import { XIcon } from 'lucide-react';
 import Order from './Order';
+import { updateParams } from '@/app/utils/updateParams';
+import { cn } from '@/lib/utils';
 
 const Filter = ({
   priceRnage,
   categories,
   brands,
-  updateParams,
+  className,
 }: {
   priceRnage: number[] | undefined;
   categories: Category[] | undefined;
   brands: Brand[] | undefined;
-  updateParams: (key: string, value: string | number | undefined) => void;
+  className?: string;
 }) => {
   const searchParams = useSearchParams();
 
   const order = searchParams.get('order');
-
   const priceToStr = searchParams.get('price_to');
   const priceFromStr = searchParams.get('price_from');
   const brandsParams = searchParams.get('brands')?.split('_') || [];
@@ -41,23 +43,22 @@ const Filter = ({
   const [selectedBrands, setSelectedBrands] = useState<string[]>(brandsParams);
   const defaultRange = priceRnage!;
 
+  const router = useRouter();
+
   const [priceRange, setPriceRange] = useState([
     priceFromStr ? Number(priceFromStr) : defaultRange[0],
     priceToStr ? Number(priceToStr) : defaultRange[1],
   ]);
+  console.log(priceRange);
+
   const [category, setCategory] = useState<string>(
     searchParams.get('category') || '',
   );
-
-  const router = useRouter();
-
-  useEffect(() => {
-    setPriceRange(defaultRange);
-  }, [defaultRange]);
+  const params = new URLSearchParams(searchParams.toString());
 
   return (
-    <>
-      <div className='relative flex items-center justify-between border-b p-4 h-[70px] text-sm font-medium'>
+    <div className={cn(className)}>
+      <div className='relative flex h-[70px] items-center justify-between border-b p-4 text-sm font-medium'>
         <p className='flex items-center gap-1'>
           <LuSettings2 size={22} /> فیلترها
         </p>
@@ -70,7 +71,13 @@ const Filter = ({
             router.push('/products');
           }}
           variant={'outline'}
-          hidden={category == '' && selectedBrands.length == 0 && priceRange[0] == defaultRange[0] && priceRange[1] == defaultRange[1] && !order }
+          hidden={
+            category == '' &&
+            selectedBrands.length == 0 &&
+            priceRange[0] == defaultRange[0] &&
+            priceRange[1] == defaultRange[1] &&
+            !order
+          }
           className='cursor-pointer rounded-full border-zinc-100 bg-zinc-50 text-xs'
         >
           <XIcon />
@@ -84,7 +91,7 @@ const Filter = ({
             dir='rtl'
             onValueChange={(val) => {
               setCategory(val);
-              updateParams('category', val);
+              updateParams('category', val, params, router);
             }}
             value={category}
           >
@@ -110,7 +117,7 @@ const Filter = ({
               onClick={() => {
                 setCategory('');
 
-                updateParams('category', undefined);
+                updateParams('category', undefined, params, router);
               }}
             >
               ×
@@ -129,7 +136,7 @@ const Filter = ({
           step={10000}
           dir='rtl'
           onValueChange={(newValue) => {
-            setPriceRange(newValue); 
+            setPriceRange(newValue);
           }}
           onValueCommit={(rangeVal) => {
             setPriceRange(rangeVal);
@@ -137,10 +144,14 @@ const Filter = ({
             updateParams(
               'price_from',
               rangeVal[0] == defaultRange[0] ? undefined : priceRange[0],
+              params,
+              router,
             );
             updateParams(
               'price_to',
               rangeVal[1] == defaultRange[1] ? undefined : priceRange[1],
+              params,
+              router,
             );
           }}
         />
@@ -166,6 +177,8 @@ const Filter = ({
                   updateParams(
                     'brands',
                     newBrands.length ? newBrands.join('_') : undefined,
+                    params,
+                    router,
                   );
                 }}
                 className='text-primary-200'
@@ -173,12 +186,12 @@ const Filter = ({
               <span>{e.name}</span>
             </div>
           ))}
-          
-          <hr className='mx-auto my-4 w-5/6 md:hidden' />
 
-        <Order className='flex-wrap md:hidden' updateParams={updateParams} />
+        <hr className='mx-auto my-4 w-5/6 md:hidden' />
+
+        <Order className='flex-wrap md:hidden' />
       </div>
-    </>
+    </div>
   );
 };
 

@@ -2,17 +2,18 @@
 
 import { LuLayers } from 'react-icons/lu';
 import { Button } from '../ui/button';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { updateParams } from '@/app/utils/updateParams';
 
 const Order = ({
-  updateParams,
   className
 }: {
-  updateParams: (key: string, value: string | number | undefined) => void;
   className? : string
 }) => {
   const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+  const router = useRouter();
   const order = searchParams.get('order') ?? 'newest';
   //   const [order, setOrder] = useState(searchParams.get('order') ?? 'popluar');
   return (
@@ -24,7 +25,7 @@ const Order = ({
         <Button 
           onClick={() => {
             if (order != 'newest') {
-              updateParams('order', 'newest');
+              updateParams('order', 'newest',params,router);
             }
           }}
           variant={null}
@@ -35,7 +36,7 @@ const Order = ({
         <Button
           onClick={() => {
             if (order != 'popluar') {
-              updateParams('order', 'popluar');
+              updateParams('order', 'popluar',params,router)
             }
           }}
           variant={null}
@@ -46,7 +47,12 @@ const Order = ({
         <Button
           onClick={() => {
             if (order != 'highPrice') {
-              updateParams('order', 'highPrice');
+              updateParams(
+                'order',
+                'highPrice',
+                params,
+                router,
+              );
             }
           }}
           variant={null}
@@ -57,7 +63,12 @@ const Order = ({
         <Button
           onClick={() => {
             if (order != 'lowPrice') {
-              updateParams('order', 'lowPrice');
+              updateParams(
+                'order',
+                'lowPrice',
+                params,
+                router,
+              );
             }
           }}
           variant={null}

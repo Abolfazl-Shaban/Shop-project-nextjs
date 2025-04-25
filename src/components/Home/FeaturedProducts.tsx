@@ -1,5 +1,9 @@
+
+
 import { Product } from '../Product/Product.type';
 import ProductSlider from '../Product/ProductSlider';
+
+
 
 const FeaturedProducts = ({
   featuredProducts,

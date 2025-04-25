@@ -1,23 +1,26 @@
-import React from 'react';
+'use client'
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '../ui/button';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { updateParams } from '@/app/utils/updateParams';
 
 interface PaginationProps {
     currentPage: number;
     totalPages: number;
-    onPageChange: (page: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
+const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages }) => {
+  const router = useRouter();
+  const params = new URLSearchParams(useSearchParams().toString());
     const handlePrevious = () => {
         if (currentPage > 1) {
-            onPageChange(currentPage - 1);
+          updateParams('page', currentPage - 1 , params,router)
         }
     };
 
     const handleNext = () => {
         if (currentPage < totalPages) {
-            onPageChange(currentPage + 1);
+          updateParams('page', currentPage + 1, params, router);
         }
     };
 
@@ -29,11 +32,11 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
                 variant={'ghost'}
                 size={'icon'}
                 key={i}
-                onClick={() => onPageChange(i)}
+                onClick={() =>
+                  updateParams('page', i, params, router)
+                }
                 className={`mx-1 rounded px-3 py-1 ${
-                  i === currentPage
-                    ? 'bg-primary-100 text-white'
-                    : ''
+                  i === currentPage ? 'bg-primary-100 text-white' : ''
                 }`}
               >
                 {i}

@@ -7,8 +7,8 @@ export async function GET(request: Request) {
 
   const category = searchParams.get('category');
   const brands = searchParams.get('brands')?.split('_');
-  const minPrice = searchParams.get('lowPrice');
-  const maxPrice = searchParams.get('highPrice');
+  const minPrice = searchParams.get('price_from');
+  const maxPrice = searchParams.get('price_to');
   const order = searchParams.get('order');
   const page = searchParams.get('page') || '1';
 

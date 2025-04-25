@@ -25,6 +25,7 @@ const ProductCardStore = ({
         className='mx-auto my-auto w-auto not-md:w-2/5 md:h-7/12'
       >
         <Image
+        priority={true}
           className='h-full w-full'
           src={product.image}
           alt={product.name}

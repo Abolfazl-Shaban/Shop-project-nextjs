@@ -7,7 +7,7 @@ const Categories = () => {
       <p className='text-center text-xl font-medium'>دسته بندی های <span className='text-xl text-primary-300'>مجبوب</span></p>
       <div className='flex items-center justify-evenly mt-4'>
         <Link
-          href={'/products#category=clothing'}
+          href={'/products?category=clothing'}
           className='flex-center hover:bg-primary-50 relative size-[74px] lg:size-24 rounded-full border-2 p-4 transition-all'
         >
           <Image
@@ -20,7 +20,7 @@ const Categories = () => {
           <span className='text-dark-100 absolute -bottom-8 text-nowrap'>پوشاک</span>
         </Link>
         <Link
-          href={'/products#category=kitchen'}
+          href={'/products?category=kitchen'}
           className='flex-center hover:bg-primary-50 relative size-[70px] lg:size-24 rounded-full border-2 p-4 transition-all'
         >
           <Image
@@ -34,7 +34,7 @@ const Categories = () => {
           <span className='text-dark-100 absolute -bottom-8  text-nowrap'>خانه و اشپزخانه</span>
         </Link>
         <Link
-          href={'/products#category=electric'}
+          href={'/products?category=electric'}
           className='flex-center hover:bg-primary-50 relative size-[70px] lg:size-24 rounded-full border-2 p-4 transition-all'
         >
           <Image

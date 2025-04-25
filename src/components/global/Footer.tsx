@@ -18,8 +18,8 @@ import { SiteUrl } from '../../../constant';
 
 const Footer = () => {
   return (
-    <div className='relative mt-14'>
-      <div className='bg-primary-100 absolute -top-14 gap-1 left-0 flex w-2/3 flex-wrap items-center justify-evenly py-2 not-sm:-top-[85px] not-sm:h-[85px] not-md:w-full md:rounded-tr-full'>
+    <div className='relative mt-30'>
+      <div className='bg-primary-100 absolute -top-14 left-0 flex w-2/3 flex-wrap items-center justify-evenly gap-1 py-2 not-sm:-top-[85px] not-sm:h-[85px] not-md:w-full md:rounded-tr-full'>
         <p className='text-nowrap text-zinc-50'>
           از تخفیف ها و امتیاز ها با خبر شوید.
         </p>
@@ -28,14 +28,16 @@ const Footer = () => {
             className='max-w-[350px] rounded-full bg-white p-5 lg:w-[350px]'
             placeholder='ایمیل خود را وارد کنید'
           />
-          <Button className='bg-primary-100 absolute top-1 left-1 rounded-full py-3 text-white'>
-            ارسال
-          </Button>
+          <div className='absolute top-0 bottom-0 left-1 flex-center'>
+            <Button className='bg-primary-100 rounded-full py-3 text-white'>
+              ارسال
+            </Button>
+          </div>
         </div>
       </div>
 
       <div className='bg-w-full relative flex flex-wrap justify-between gap-6 bg-[#1D1D1B] p-10 pt-28'>
-        <div className='max-w-[400px] grow -mt-24 flex flex-col items-center gap-2 md:-mt-40'>
+        <div className='-mt-24 flex max-w-[400px] grow flex-col items-center gap-2 md:-mt-40'>
           <Image
             className='size-20 rounded-full bg-white p-1.5'
             src={'/logo.png'}
@@ -167,8 +169,14 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className='w-full p-5 h-[70px] bg-[#141414] flex-center'>
-        <div className='text-zinc-400 flex text-nowrap text-sm gap-1'>تمامی حقوق وب سایت برای <a href={SiteUrl}><h1 className='text-primary-50'>فروشگاه انلاین شاپ</h1></a>محفوظ است.</div>
+      <div className='flex-center h-[70px] w-full bg-[#141414] p-5'>
+        <div className='flex gap-1 text-sm text-nowrap text-zinc-400'>
+          تمامی حقوق وب سایت برای{' '}
+          <a href={SiteUrl}>
+            <h1 className='text-primary-50'>فروشگاه انلاین شاپ</h1>
+          </a>
+          محفوظ است.
+        </div>
       </div>
     </div>
   );

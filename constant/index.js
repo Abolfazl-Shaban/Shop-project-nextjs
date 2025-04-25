@@ -16,4 +16,4 @@ export const navPaths = [
     path: '#about',
   },
 ];
-export const SiteUrl = 'localhost:3000';
+export const SiteUrl = 'http://localhost:3000';

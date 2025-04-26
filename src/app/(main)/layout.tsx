@@ -1,5 +1,6 @@
 import Header from '@/components/global/Header';
 import Footer from '@/components/global/Footer';
+import { CartProvider } from '@/context/CartContext';
 
 export default function RootLayout({
   children,
@@ -8,9 +9,11 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <Header />
-      <div className=''>{children}</div>
-      <Footer />
+      <CartProvider>
+        <Header />
+        <div className=''>{children}</div>
+        <Footer />
+      </CartProvider>
     </>
   );
 }

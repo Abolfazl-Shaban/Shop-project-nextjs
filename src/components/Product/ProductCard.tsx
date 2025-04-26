@@ -16,7 +16,7 @@ const ProductCard = ({
   return (
     <div
       className={cn(
-        `relative flex h-[320px] w-[340px] flex-col items-start rounded-lg border border-zinc-200 bg-white p-4 pt-1 shadow`,
+        `relative flex h-[320px] mix-w-[260px] max-w-[340px] flex-col items-start rounded-lg border border-zinc-200 bg-white p-4 pt-1 shadow`,
         className,
       )}
     >
@@ -60,10 +60,11 @@ const ProductCard = ({
           {product.discount}% تخفیف
         </p>
       )}
-      <p className='flex-center absolute top-6/12 left-2 gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 font-[vazir] text-sm'>
+      
+      {product.rating && <p className='flex-center absolute top-6/12 left-2 gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 font-[vazir] text-sm'>
         {product.rating}
         <Star fill='#FA8618' className='text-primary-100' size={24} />
-      </p>
+      </p>}
     </div>
   );
 };

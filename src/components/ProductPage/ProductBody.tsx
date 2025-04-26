@@ -37,12 +37,12 @@ const ProductBody = ({ productDetails }: { productDetails: ProductDetail }) => {
       <div>
         {/* Desc */}
         <div className={`${tab != 'description' && 'hidden'} p-5`}>
-          <p className=' text-dark-300'>{productDetails.description}</p>
+          <p className=' text-dark-300 text-sm'>{productDetails.description}</p>
         </div>
         {/* spec */}
         <div className={`${tab != 'specifications' && 'hidden'} p-3 `}>
           {productDetails.specifications.map((r,index) => <div className='bg-primary-50/5 rounded-lg p-4 flex flex-col my-4 gap-2' key={index}>
-                <p className='text-lg font-medium  text-dark-200'>{r.title}:</p>
+                <p className='text-lg not-lg:text-base font-medium  text-dark-200'>{r.title}:</p>
                 <p className=' text-sm text-dark-300'>{r.value}</p>
           </div> )}
         </div>

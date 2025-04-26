@@ -6,8 +6,8 @@ import { useState } from 'react';
 const ProductGallery = ({ images }: { images: string[] }) => {
   const [galleryImage, setGalleryImage] = useState(images[0]);
   return (
-    <div className='flex'>
-      <div className='flex flex-col flex-wrap gap-2'>
+    <div className='flex not-lg:flex-col-reverse mb-10'>
+      <div className='flex lg:flex-col justify-center flex-wrap gap-2'>
         {images.map((e, i) => (
           <div
             onClick={() => setGalleryImage(e)}

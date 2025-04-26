@@ -49,7 +49,6 @@ const Filter = ({
     priceFromStr ? Number(priceFromStr) : defaultRange[0],
     priceToStr ? Number(priceToStr) : defaultRange[1],
   ]);
-  console.log(priceRange);
 
   const [category, setCategory] = useState<string>(
     searchParams.get('category') || '',

@@ -8,35 +8,35 @@ import { CalDiscount } from '@/app/utils/calDiscount';
 import ProductBody from '@/components/ProductPage/ProductBody';
 import ProductSlider from '@/components/Product/ProductSlider';
 import Link from 'next/link';
+import ProductCartButton from '@/components/ProductPage/ProductCartButton';
 
 const ProductInfo = async ({ params }: { params: { id: string } }) => {
   const [product, productDetails]: [Product, ProductDetail] = await Promise.all(
     [
       fetch(`${SiteUrl}/api/products/${params.id}`).then((res) => res.json()),
       fetch(`${SiteUrl}/api/productdetails`).then((res) => res.json()),
-    ],  
+    ],
   );
-console.log(product);
 
-  if(!product){
-    return <div className='flex items-center justify-center h-[70vh]'>
-      <div>
-        <p className='text-xl font-semibold'>محصول مورد نظر پیدا نشد!</p>
-        <p className='mt-1'>میتوانید به صفحه فروشگاه بروید</p>
-        <Link href={'/products'}  className='block mt-3'>
-        <Button>
-          بازگشت
-        </Button>
-        </Link>
+  if (!product) {
+    return (
+      <div className='flex h-[70vh] items-center justify-center'>
+        <div>
+          <p className='text-xl font-semibold'>محصول مورد نظر پیدا نشد!</p>
+          <p className='mt-1'>میتوانید به صفحه فروشگاه بروید</p>
+          <Link href={'/products'} className='mt-3 block'>
+            <Button>بازگشت</Button>
+          </Link>
+        </div>
       </div>
-    </div>
+    );
   }
 
   return (
-    <div className='container mx-auto my-24 p-5'>
-      <div className='relative my-8 flex gap-8'>
+    <div className='container mx-auto lg:my-24'>
+      <div className='relative flex gap-8 lg:my-8'>
         <div className='grow'>
-          <div className='flex items-center justify-between rounded-xl border border-zinc-300 px-6 py-8'>
+          <div className='flex items-center justify-between rounded-xl border-zinc-300 px-6 py-8 not-lg:flex-col-reverse lg:border'>
             <div>
               <h2 className='text-xl font-medium'>{product?.name}</h2>
               <p className='text-dark-300 mt-2 text-sm'>
@@ -63,36 +63,38 @@ console.log(product);
           <ProductBody productDetails={productDetails} />
         </div>
         {/* side bar*/}
-        <div className='sticky top-20 h-fit w-1/4 rounded-xl border-zinc-100 p-6 shadow-[0_0_15px_-2px_#bbb]'>
-          <h2 className='text-lg font-medium'>{product.name}</h2>
-          {product.discount > 0 && (
-            <p className='mx-1 mr-auto w-fit rounded-lg bg-red-500 p-0.5 px-2 font-[vazir] text-sm text-white'>
-              {product.discount}% تخفیف
-            </p>
-          )}
-          <div className='flex items-center justify-end gap-2 p-2 px-1.5'>
-            <p
-              className={`${product.discount == 0 && 'hidden'} font-[vazir] text-base font-semibold text-zinc-600`}
-            >
-              <span className='font-[vazir] line-through'>
-                {product.price.toLocaleString()}
-              </span>
-            </p>
-            <p
-              className={`${product.discount > 0 && ''} line font-[vazir] text-xl font-semibold`}
-            >
-              {CalDiscount(product.price, product.discount).toLocaleString()}{' '}
-              <span className='text-sm font-medium'>تومان</span>
-            </p>
+        <div className='fixed bottom-0 left-0 z-[2] h-fit w-full border-zinc-300 bg-white p-3 not-lg:border-t not-lg:px-5 lg:sticky lg:top-20 lg:w-1/4 lg:rounded-xl lg:shadow-[0_0_15px_-2px_#bbb]'>
+          <h2 className='text-base font-medium not-lg:hidden'>
+            {product.name}
+          </h2>
+          <div className='mr-auto flex items-center justify-end gap-2 pb-2 lg:flex-col lg:items-end'>
+            {product.discount > 0 && (
+              <p className='mx-1 w-fit rounded-lg bg-red-500 p-0.5 px-2 font-[vazir] text-sm text-white'>
+                {product.discount}%<span className='not-lg:hidden'> تخفیف</span>
+              </p>
+            )}
+            <div className='flex items-center gap-2 p-1 px-1.5'>
+              <p
+                className={`${product.discount == 0 && 'hidden'} font-[vazir] text-base font-semibold text-zinc-600`}
+              >
+                <span className='font-[vazir] line-through'>
+                  {product.price.toLocaleString()}
+                </span>
+              </p>
+              <p
+                className={`${product.discount > 0 && ''} line font-[vazir] text-lg font-semibold`}
+              >
+                {CalDiscount(product.price, product.discount).toLocaleString()}{' '}
+                <span className='text-sm font-medium'>تومان</span>
+              </p>
+            </div>
           </div>
-          <Button className='relative w-full cursor-pointer py-6 font-medium'>
-            افزورن به سبد خرید
-          </Button>
+          <ProductCartButton product={product} />
         </div>
       </div>
       <hr className='mx-auto mt-24 w-2/3 border-zinc-400' />
       <div className='mt-8'>
-        <p className='my-3 text-xl font-medium'>محصولات مرتبط</p>
+        <p className='my-3 px-2 text-xl font-medium'>محصولات مرتبط</p>
         <div>
           <ProductSlider
             products={productDetails.relatedProducts as Product[]}

@@ -1,6 +1,5 @@
 'use server';
 
-import { Product } from '@/components/Product/Product.type';
 import Filter from '@/components/store/Filter';
 import Order from '@/components/store/Order';
 import Pagination from '@/components/store/Pagination';
@@ -13,7 +12,7 @@ import {
 } from '@/components/ui/sheet';
 import { LucideFilter } from 'lucide-react';
 import { SiteUrl } from '../../../../constant';
-import { ReadonlyURLSearchParams, redirect } from 'next/navigation';
+import { ReadonlyURLSearchParams } from 'next/navigation';
 
 const ProductsPage = async ({
   searchParams,

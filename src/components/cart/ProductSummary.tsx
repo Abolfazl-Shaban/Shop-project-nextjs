@@ -47,15 +47,17 @@ export const CartSummary = ({
   );
 
   return (
-    <div className='flex flex-col gap-3 rounded-xl bg-white p-6 lg:shadow-[0_0_15px_-2px_#ddd]'>
+    <div className='flex flex-col gap-4'>
       <SummaryRow label='قیمت محصولات' value={subtotal} />
-      <SummaryRow
-        label='تخفیف'
-        value={discount}
-        textClassName='text-red-500 font-medium'
-        valueClassName='text-red-500 font-semibold'
-      />
-      <SummaryRow label='مالیات %10' value={tax} />
+      {discount > 0 && (
+        <SummaryRow
+          label='تخفیف'
+          value={discount}
+          textClassName='text-red-500 font-medium'
+          valueClassName='text-red-500 font-semibold font-[vazir]'
+        />
+      )}
+      <SummaryRow label='مالیات %10' value={tax} textClassName='font-[vazir]' />
       <SummaryRow label='جمع کل' value={total} isTotal />
     </div>
   );

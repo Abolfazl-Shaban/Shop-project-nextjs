@@ -16,7 +16,7 @@ const ProductCard = ({
   return (
     <div
       className={cn(
-        `relative flex h-[320px] mix-w-[260px] max-w-[340px] flex-col items-start rounded-lg border border-zinc-200 bg-white p-4 pt-1 shadow`,
+        `relative flex h-[320px] min-w-[260px] max-w-[340px] flex-col items-start rounded-lg border border-zinc-200 bg-white p-4 pt-1 shadow`,
         className,
       )}
     >

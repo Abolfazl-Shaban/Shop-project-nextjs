@@ -3,27 +3,43 @@ import Image from 'next/image';
 import { Product } from '../Product/Product.type';
 import { CalDiscount } from '@/app/utils/calDiscount';
 import { productDetail } from '@/app/data/mockData';
-import ProductCartButton from '../ProductPage/ProductCartButton';
 import CartButton from './CartButton';
 const CartItem = ({ product }: { product: Product }) => {
   return (
-    <div className='m-2 flex items-center rounded-xl border p-4'>
-      <div className='grow '>
-        <p className='text-lg font-medium'>{product.name}</p>
-        <p className='mt-1 text-dark-300 text-xs'>{productDetail.description}</p>
+    <div className=' gap-4 flex lg:rounded-xl border-b lg:border w-full p-1 not-md:pb-8 lg:p-4 lg:my-2'>
+      <div>
+        <div className='flex-center w-[150px]'>
+          <Image
+            className='h-auto w-full'
+            priority
+            src={product.image}
+            alt={product.name}
+            height={1024}
+            width={1024}
+          />
+        </div>
+        <div className='mt-auto justify-center ml-1 flex items-center '>
+          <CartButton product={product} />
+        </div>
+      </div>
 
-<div className=' flex items-center gap-2 mt-5'>
-
-        <div className='flex items-center gap-2'>
+      <div className='flex grow flex-col'>
+        <div className='flex mt-auto justify flex-col'>
+          <p className=' text-lg my-1 font-medium'>{product.name}</p>
+          <p className='text-dark-300 mt-1 text-xs'>
+            {productDetail.description}
+          </p>
+        </div>
+        <div className='mt-auto pt-2 flex flex-wrap items-center gap-1'>
           {product.discount > 0 && (
-              <p className='mx-1 w-fit rounded-lg bg-red-500 p-0.5 px-2 font-[vazir] text-sm text-white'>
+            <p className='mx-1 w-fit rounded-lg bg-red-500 p-0.5 px-2 font-[vazir] text-sm text-white'>
               {product.discount}%
             </p>
           )}
-          <div className='flex items-center gap-2 p-1 px-1.5'>
+          <div className='flex flex-wrap-reverse items-center gap-1 md:gap-2 p-1 px-1.5'>
             <p
               className={`${product.discount == 0 && 'hidden'} font-[vazir] text-base font-semibold text-zinc-600`}
-              >
+            >
               <span className='font-[vazir] line-through'>
                 {product.price.toLocaleString()}
               </span>
@@ -34,19 +50,6 @@ const CartItem = ({ product }: { product: Product }) => {
             </p>
           </div>
         </div>
-
-          <CartButton product={product} />
-                </div>
-      </div>
-      <div className='flex-center w-[200px]'>
-        <Image
-          className='h-auto w-full'
-          priority
-          src={product.image}
-          alt={product.name}
-          height={1024}
-          width={1024}
-        />
       </div>
     </div>
   );

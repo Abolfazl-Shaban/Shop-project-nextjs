@@ -3,12 +3,10 @@
 import { useCart } from '@/context/CartContext';
 import { Button } from '../ui/button';
 import { Product } from '../Product/Product.type';
-import { ArrowLeft, Minus, MoveLeft, Plus, Trash2 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { Minus, Plus, Trash2 } from 'lucide-react';
 
 const CartButton = ({ product }: { product: Product }) => {
   const context = useCart();
-  const router = useRouter();
 
   const item = context?.getCartItems().find((r) => r.product.id == product.id);
 

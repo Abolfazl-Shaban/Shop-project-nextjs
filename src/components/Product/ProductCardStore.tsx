@@ -22,16 +22,20 @@ const ProductCardStore = ({
     >
       <Link
         href={`/products/${product.id}`}
-        className='mx-auto my-auto w-auto not-md:w-2/5 md:h-7/12'
+        className='not-md:relative mx-auto my-auto w-auto not-md:w-[150px] md:h-7/12'
       >
         <Image
         priority={true}
-          className='h-full w-full'
+          className='h-full w-full '
           src={product.image}
           alt={product.name}
           width={512}
           height={512}
         />
+         <p className='flex-center absolute not-md:bottom-0 bottom-8 not-md:-right-8 left-1/3 h-fit w-fit gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 font-[vazir] text-sm md:top-6/12 md:left-2'>
+          {product.rating}
+          <Star fill='#FA8618' className='text-primary-100' size={24} />
+        </p>
       </Link>
       <div className='flex h-full grow flex-col justify-center md:w-full'>
         <Link href={`/products/${product.id}`}>
@@ -64,10 +68,7 @@ const ProductCardStore = ({
             {product.discount}% تخفیف
           </p>
         )}
-        <p className='flex-center absolute bottom-8 left-1/3 h-fit w-fit gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 font-[vazir] text-sm md:top-6/12 md:left-2'>
-          {product.rating}
-          <Star fill='#FA8618' className='text-primary-100' size={24} />
-        </p>
+       
       </div>
     </div>
   );

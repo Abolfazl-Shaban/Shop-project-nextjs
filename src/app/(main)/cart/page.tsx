@@ -34,7 +34,7 @@ const CartPage = () => {
             </div>
             <div className='not-md:border-t not-md:border-zinc-400 not-md:bottom-0 bg-zinc-100 p-2 not-md:left-0 not-md:w-full md:sticky z-[1] md:bg-white lg:top-16 h-fit w-[35%] lg:w-1/4 '>
               <p className='p-1 lg:p-2 text-sm font-semibold py-4'>صورتحساب</p>
-              <div className='rounded-xl md:bg-white p-2 md:p-4 lg:p-6 md:shadow-[0_0_15px_-5px_#ddd] '>
+              <div className='rounded-xl md:bg-white p-2 md:p-4 lg:p-6 md:shadow-[0_0_15px_-5px_#ddd]'>
                 <CartSummary cart={cart!} />
                 <Button className='bg-green-500 hover:bg-green-500/70 py-5 w-full  mt-4'>تایید و ادامه</Button>
               </div>

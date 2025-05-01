@@ -19,13 +19,13 @@ import { SiteUrl } from '../../../constant';
 const Footer = () => {
   return (
     <div className='relative mt-30'>
-      <div className='bg-primary-100 absolute -top-14 left-0 flex w-2/3 flex-wrap items-center justify-evenly gap-1 py-2 not-sm:-top-[85px] not-sm:h-[85px] not-md:w-full md:rounded-tr-full'>
-        <p className='text-nowrap text-zinc-50'>
+      <div className='bg-primary-100 px-4 absolute -top-14 left-0 flex w-2/3 flex-wrap items-center justify-evenly gap-1 py-2 not-sm:-top-[85px] not-sm:h-[85px] not-md:w-full md:rounded-tr-full'>
+        <p className='text-wrap text-zinc-50'>
           از تخفیف ها و امتیاز ها با خبر شوید.
         </p>
-        <div className='relative w-fit'>
+        <div className='relative grow max-w-[300px] lg:w-[350px]'>
           <Input
-            className='max-w-[350px] rounded-full bg-white p-5 text-xs lg:w-[350px]'
+            className='w-full rounded-full bg-white p-5 text-sm '
             placeholder='ایمیل خود را وارد کنید'
           />
           <div className='absolute top-0 bottom-0 left-1 flex-center'>
@@ -37,7 +37,7 @@ const Footer = () => {
       </div>
 
       <div className='bg-w-full relative flex flex-wrap justify-between gap-6 bg-[#1D1D1B] p-10 pt-28'>
-        <div className='-mt-24 flex max-w-[400px] grow flex-col items-center gap-2 md:-mt-40'>
+        <div className='-mt-24 flex  max-w-[400px] grow flex-col items-center gap-2 md:-mt-40'>
           <Image
             className='size-20 rounded-full bg-white p-1.5'
             src={'/logo.png'}
@@ -49,10 +49,10 @@ const Footer = () => {
           <p className='text-2xl font-bold text-white'>
             <span className='text-primary-300 text-base'>ONLINE</span>SHOP
           </p>
-          <p className='text-sm font-light text-zinc-200'>
+          <p className='text-sm  font-light text-zinc-200'>
             بزرگترین فروشگاه اینترنتی در تمام ایران
           </p>
-          <div className='mt-6 flex w-fit gap-3'>
+          <div className='mt-6 flex flex-wrap w-fit gap-3'>
             <Link href={'https://t.me/AbolfazlShaban08'}>
               <RiTelegram2Fill className='size-7 p-1 text-white' />
             </Link>
@@ -157,7 +157,7 @@ const Footer = () => {
               href={'https://t.me/AbolfazlShaban08'}
               className='flex items-center gap-1 transition-all hover:gap-2 hover:text-white'
             >
-              <FaTelegramPlane /><span>@AbolfazlShaban08</span>
+              <FaTelegramPlane /><p className='text-balance'>@AbolfazlShaban08</p>
             </Link>
             <Link
               href={'#'}

@@ -1,130 +1,41 @@
 'use client';
-import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { useState } from 'react';
 
+import { CheckoutSummary } from '@/components/checkout/CheckoutSummary';
+import OrderSummary from '@/components/checkout/OrderSummary';
+import PaymentMethods from '@/components/checkout/PaymentMethods';
+import UserInfo from '@/components/checkout/UserInfo';
+import { Button } from '@/components/ui/button';
+import { useCart } from '@/context/CartContext';
+
+import { useState } from 'react';
 const CheckoutPage = () => {
   const [paymentMethod, setPaymentMethod] = useState('online');
+  const cart = useCart();
+  
+
   return (
-    <div className='container mx-auto my-6 flex gap-6'>
-      <div className='grow'>
-        <h2 className='p-2 text-sm font-medium'>اطلاعات شما</h2>
-        <div className='text-dark-300 grid grid-cols-2 gap-6 rounded-xl border p-4'>
-          <div className=' '>
-            <label className='p-1 px-3 text-sm' htmlFor='name'>
-              نام و نام خانوادگی
-            </label>
-            <Input
-              className='py-5'
-              id='name'
-              placeholder='نام خود را وارد کنید'
-            />
+    <div className='container mx-auto my-6 flex not-md:flex-col fo gap-6'>
+      <div className='grow p-1.5'>
+        <UserInfo />
+        <PaymentMethods
+          paymentMethod={paymentMethod}
+          setPaymentMethod={setPaymentMethod}
+        />
+        <OrderSummary />
+      </div>
+      <div className='not-md:border-t not-md:border-zinc-400 not-md:bottom-0 bg-zinc-100 p-2 not-md:left-0 not-md:w-full md:sticky z-[1] md:bg-white lg:top-16 h-fit w-[35%] lg:w-1/4'>
+        <p className='p-1 lg:p-2 text-sm font-semibold py-4'>صورتحساب</p>
+        <div className='rounded-xl md:bg-white p-4 md:shadow-[0_0_15px_-5px_#ddd]'>
+          <CheckoutSummary addition={(paymentMethod == 'online' ? 120000 : paymentMethod == 'cartToCart' ? 100000 : 150000)} cart={cart!} />
+          
+          <div className='group relative'>
+            <p className='group-hover:opacity-100 transition-all items-center justify-center left-0 right-0 -top-2 p-1 bg-red-500 rounded-full text-xs opacity-0 text-white px-2 absolute w-fit pointer-events-none'>پرداخت موقتا غیر فعال میباشد</p>
+          <Button className='bg-green-500 py-5 w-full mt-4 hover:bg-green-500/70' >
+            پرداخت
+          </Button>
           </div>
-          <div className=''>
-            <label className='p-1 px-3 text-sm' htmlFor='phone'>
-              شماره همراه
-            </label>
-            <Input
-              className='py-5'
-              id='phone'
-              placeholder='شماره همراه خود را وارد کنید'
-            />
-          </div>
-          <div className=' '>
-            <label className='p-1 px-3 text-sm' htmlFor='ostan'>
-              استان
-            </label>
-            <Select dir='rtl'>
-              <SelectTrigger id='ostan' className='w-full py-5'>
-                <SelectValue placeholder='استان خود را انتخاب کنید' />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='khorasanrazavi'>خراسان رضوی</SelectItem>
-                <SelectItem value='tehran'>تهران</SelectItem>
-                <SelectItem value='esfahan'>اصفهان</SelectItem>
-                <SelectItem value='ghom'>قوم</SelectItem>
-                <SelectItem value='ardbil'>اردبیل</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className=' '>
-            <label className='p-1 px-3 text-sm' htmlFor='city'>
-              شهر
-            </label>
-            <Select dir='rtl'>
-              <SelectTrigger id='city' className='w-full py-5'>
-                <SelectValue placeholder='شهر خود را انتخاب کنید' />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='mashhad'>مشهد</SelectItem>
-                <SelectItem value='torbat'>تربت حیدریه</SelectItem>
-                <SelectItem value='nishabor'>نیشابور</SelectItem>
-                <SelectItem value='kashmar'>کاشمر</SelectItem>
-                <SelectItem value='tehran'>تهران</SelectItem>
-                <SelectItem value='esfahan'>اصفهان</SelectItem>
-                <SelectItem value='karaj'>کرج</SelectItem>
-                <SelectItem value='ardbil'>اردبیل</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className='col-span-2'>
-            <label className='p-1 px-3 text-sm' htmlFor='locaddress'>
-              آدرس
-            </label>
-            <Input
-              className='py-5'
-              id='locaddress'
-              placeholder='ادرس  سکونت خود را وارد کنید'
-            />
-          </div>
-          <div className=' '>
-            <label className='p-1 px-3 text-sm' htmlFor='postalcode'>
-              کد پستی
-            </label>
-            <Input
-              className='py-5'
-              id='postalcode'
-              placeholder='کد پستی خود را وارد کنید'
-            />
-          </div>
-          <div className=' '>
-            <label className='p-1 px-3 text-sm' htmlFor='plate'>
-              پلاک
-            </label>
-            <Input
-              className='py-5'
-              id='plate'
-              placeholder='پلاک خود را وارد کنید'
-            />
-          </div>
-        </div>
-        <h2 className='p-2 text-sm font-medium'>روش های پرداخت</h2>
-        <div>
-          <div className='border-primary-50/50 rounded-lg border bg-zinc-100 p-3'>
-            <div className='flex items-center gap-2'>
-              <p
-                className={`flex-center size-5 rounded-full border ${paymentMethod == 'online' ? 'border-primary-100' : 'border-zinc-700'} `}
-              >
-                <p
-                  className={`size-3 rounded-full ${paymentMethod == 'online' && 'bg-primary-100'}`}
-                ></p>
-              </p>
-              <h4 className='text-dark-200 text-sm font-medium'>انلاین</h4>
-            </div>
-            <p className='text-dark-300 text-sm'>
-              پرداخت انلایت از طریق درگاه شاپرک.
-            </p>
-          </div>
-          <div></div>
         </div>
       </div>
-      <div className='sticky top-0 w-1/4 rounded-xl border p-4'></div>
     </div>
   );
 };

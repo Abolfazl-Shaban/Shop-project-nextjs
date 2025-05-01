@@ -5,9 +5,11 @@ import { CartSummary } from '@/components/cart/ProductSummary';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/CartContext';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const CartPage = () => {
   const cart = useCart();
+  const router = useRouter();
   return (
     <div className='container mx-auto mt-4 '>
       <h2 className='text-lg font-medium p-2'>سبد خرید</h2>
@@ -36,7 +38,7 @@ const CartPage = () => {
               <p className='p-1 lg:p-2 text-sm font-semibold py-4'>صورتحساب</p>
               <div className='rounded-xl md:bg-white p-2 md:p-4 lg:p-6 md:shadow-[0_0_15px_-5px_#ddd]'>
                 <CartSummary cart={cart!} />
-                <Button className='bg-green-500 hover:bg-green-500/70 py-5 w-full  mt-4'>تایید و ادامه</Button>
+                <Button onClick={() => router.push('/checkout') } className='bg-green-500 hover:bg-green-500/70 py-5 w-full  mt-4'>تایید و ادامه</Button>
               </div>
             </div>
           </>

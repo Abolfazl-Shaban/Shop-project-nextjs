@@ -2,7 +2,7 @@ import { Product } from "@/components/Product/Product.type";
 import { CartItem } from "@/context/CartContext";
 
 
-export const calculateCartTotals = (cartItems: CartItem[]) => {
+export const calculateCartTotals = (cartItems: CartItem[],addition = 0 ) => {
     const subtotal = cartItems.reduce(
       (sum, item) => sum + item.product.price * item.quantity,
       0
@@ -19,7 +19,7 @@ export const calculateCartTotals = (cartItems: CartItem[]) => {
       0
     );
   
-    const total = subtotal - discount + tax;
+    const total = subtotal - discount + tax + addition;
   
     return {
       subtotal,

@@ -8,12 +8,12 @@ export const navPaths = [
     path: '/products',
   },
   {
-    name: 'محصولات ویژه',
-    path: '#special',
+    name: 'سبد خرید',
+    path: '/cart',
   },
   {
-    name: 'درباره ما',
-    path: '#about',
+    name:  'حساب کاربری',
+    path: '/account',
   },
 ];
 export const SiteUrl = 'http://localhost:3000';

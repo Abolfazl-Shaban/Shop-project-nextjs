@@ -26,14 +26,17 @@
     font-family: 'vazir';
     src: url('/font/Vazir-FD.ttf');
     font-weight: 200;
+  unicode-range: U+30-39;
   }
   @font-face {
     font-family: 'vazir';
     src: url('/font/Vazir-Medium-FD.ttf');
     font-weight: 600;
+    
+  unicode-range: U+30-39;
   }
   *{
-    font-family: 'vazirmatn','vazir';
+    font-family: 'vazir','vazirmatn';
   }
 }
 

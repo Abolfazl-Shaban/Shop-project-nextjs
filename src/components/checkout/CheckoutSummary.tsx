@@ -41,7 +41,7 @@ export const CheckoutSummary = ({
       </p>
       <p
         className={cn(
-          `font-[vazir] ${isTotal ? 'text-sm font-semibold' : 'text-xs'}`,
+          ` ${isTotal ? 'text-sm font-semibold' : 'text-xs'}`,
           valueClassName,
         )}
       >
@@ -58,15 +58,15 @@ export const CheckoutSummary = ({
           label='تخفیف'
           value={discount}
           textClassName='text-red-500 font-medium'
-          valueClassName='text-red-500 font-semibold font-[vazir]'
+          valueClassName='text-red-500 font-semibold '
         />
       )}
-      <SummaryRow label='مالیات %10' value={tax} textClassName='font-[vazir]' />
+      <SummaryRow label='مالیات %10' value={tax} textClassName='' />
       {addition && (
         <SummaryRow
           label='هزینه بسته بندی و ارسال'
           value={addition}
-          textClassName='font-[vazir]'
+          textClassName=''
         />
       )}
       <SummaryRow label='جمع کل' value={total} isTotal />

@@ -19,10 +19,14 @@ const ProductsPage = async ({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) => {
-  const query = new URLSearchParams((await searchParams) as never) as ReadonlyURLSearchParams;
+  const query = new URLSearchParams(
+    (await searchParams) as never,
+  ) as ReadonlyURLSearchParams;
 
   const [products, brands, categories, priceRange] = await Promise.all([
-    fetch(`${SiteUrl}/api/products?${query.toString()}`).then((res) => res.json()),
+    fetch(`${SiteUrl}/api/products?${query.toString()}`).then((res) =>
+      res.json(),
+    ),
     fetch(`${SiteUrl}/api/products/brands`).then((res) => res.json()),
     fetch(`${SiteUrl}/api/products/categories`).then((res) => res.json()),
     fetch(`${SiteUrl}/api/products/pricerange`).then((res) => res.json()),
@@ -59,12 +63,18 @@ const ProductsPage = async ({
             </Sheet>
             <Order className='bg-zinc-100 p-3 not-md:hidden' />
           </div>
-          <Products products={products?.data} />
-          {products?.meta && ( 
-            <Pagination
-              totalPages={products?.meta.totalPages}
-              currentPage={Number(query.get('page') || 1)}
-            /> 
+          {products.data.length == 0 ? (
+            <p className='text-dark-300 text-sm mt-12 text-center'>محصولی یافت نشد!</p>
+          ) : (
+            <>
+              <Products products={products?.data} />
+              {products?.meta && (
+                <Pagination
+                  totalPages={products?.meta.totalPages}
+                  currentPage={Number(query.get('page') || 1)}
+                />
+              )}
+            </>
           )}
         </div>
       </div>

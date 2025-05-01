@@ -19,17 +19,17 @@ import { SiteUrl } from '../../../constant';
 const Footer = () => {
   return (
     <div className='relative mt-30'>
-      <div className='bg-primary-100 px-4 absolute -top-14 left-0 flex w-2/3 flex-wrap items-center justify-evenly gap-1 py-2 not-sm:-top-[85px] not-sm:h-[85px] not-md:w-full md:rounded-tr-full'>
+      <div className='bg-primary-100 absolute -top-14 left-0 flex w-2/3 flex-wrap items-center justify-evenly gap-1 px-4 py-2 not-sm:-top-[85px] not-sm:h-[85px] not-md:w-full md:rounded-tr-full'>
         <p className='text-wrap text-zinc-50'>
           از تخفیف ها و امتیاز ها با خبر شوید.
         </p>
-        <div className='relative grow max-w-[300px] lg:w-[350px]'>
+        <div className='relative max-w-[300px] grow lg:w-[350px]'>
           <Input
-            className='w-full rounded-full bg-white p-5 text-sm '
+            className='w-full rounded-full bg-white p-5 text-sm'
             placeholder='ایمیل خود را وارد کنید'
           />
-          <div className='absolute top-0 bottom-0 left-1 flex-center'>
-            <Button className='bg-primary-100 rounded-full py-3 not-lg:text-xs text-white'>
+          <div className='flex-center absolute top-0 bottom-0 left-1'>
+            <Button className='bg-primary-100 rounded-full py-3 text-white not-lg:text-xs'>
               ارسال
             </Button>
           </div>
@@ -37,7 +37,7 @@ const Footer = () => {
       </div>
 
       <div className='bg-w-full relative flex flex-wrap justify-between gap-6 bg-[#1D1D1B] p-10 pt-28'>
-        <div className='-mt-24 flex  max-w-[400px] grow flex-col items-center gap-2 md:-mt-40'>
+        <div className='-mt-24 flex max-w-[400px] grow flex-col items-center gap-2 md:-mt-40'>
           <Image
             className='size-20 rounded-full bg-white p-1.5'
             src={'/logo.png'}
@@ -49,10 +49,10 @@ const Footer = () => {
           <p className='text-2xl font-bold text-white'>
             <span className='text-primary-300 text-base'>ONLINE</span>SHOP
           </p>
-          <p className='text-sm  font-light text-zinc-200'>
+          <p className='text-sm font-light text-zinc-200'>
             بزرگترین فروشگاه اینترنتی در تمام ایران
           </p>
-          <div className='mt-6 flex flex-wrap w-fit gap-3'>
+          <div className='mt-6 flex w-fit flex-wrap gap-3'>
             <Link href={'https://t.me/AbolfazlShaban08'}>
               <RiTelegram2Fill className='size-7 p-1 text-white' />
             </Link>
@@ -151,13 +151,14 @@ const Footer = () => {
               href={'tel:09154442081'}
               className='flex items-center gap-1 transition-all hover:gap-2 hover:text-white'
             >
-              <FaPhone /> <span className='font-[vazir]'>09154442081</span>
+              <FaPhone /> <span className=''>09154442081</span>
             </Link>
             <Link
               href={'https://t.me/AbolfazlShaban08'}
               className='flex items-center gap-1 transition-all hover:gap-2 hover:text-white'
             >
-              <FaTelegramPlane /><p className='text-balance'>@AbolfazlShaban08</p>
+              <FaTelegramPlane />
+              <p className='text-balance'>@AbolfazlShaban08</p>
             </Link>
             <Link
               href={'#'}
@@ -169,7 +170,14 @@ const Footer = () => {
         </div>
       </div>
       <div className='flex-center h-[70px] w-full bg-[#141414] p-5'>
-        <p className='text-zinc-200 text-center text-sm'>تمامی حقوق وب سایت برای <a className='text-primary-50' href={SiteUrl}> فروشگاه انلاین شاپ </a>محفوظ است.</p>
+        <p className='text-center text-sm text-zinc-200'>
+          تمامی حقوق وب سایت برای{' '}
+          <a className='text-primary-50' href={SiteUrl}>
+            {' '}
+            فروشگاه انلاین شاپ{' '}
+          </a>
+          محفوظ است.
+        </p>
       </div>
     </div>
   );

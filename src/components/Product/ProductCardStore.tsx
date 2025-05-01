@@ -22,17 +22,17 @@ const ProductCardStore = ({
     >
       <Link
         href={`/products/${product.id}`}
-        className='not-md:relative mx-auto my-auto w-auto not-md:w-[150px] md:h-7/12'
+        className='mx-auto my-auto w-auto not-md:relative not-md:w-[150px] md:h-7/12'
       >
         <Image
-        priority={true}
-          className='h-full w-full '
+          priority={true}
+          className='h-full w-full'
           src={product.image}
           alt={product.name}
           width={512}
           height={512}
         />
-         <p className='flex-center absolute not-md:bottom-0 bottom-8 not-md:-right-8 left-1/3 h-fit w-fit gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 font-[vazir] text-sm md:top-6/12 md:left-2'>
+        <p className='flex-center absolute bottom-8 left-1/3 h-fit w-fit gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 text-sm not-md:-right-8 not-md:bottom-0 md:top-6/12 md:left-2'>
           {product.rating}
           <Star fill='#FA8618' className='text-primary-100' size={24} />
         </p>
@@ -42,20 +42,18 @@ const ProductCardStore = ({
           <h2 className='text-lg font-normal'>{product.name}</h2>
         </Link>
         <p
-          className={`${product.discount > 0 && ''} text-dark-100 line mt-4 font-[vazir] text-lg`}
+          className={`${product.discount > 0 && ''} text-dark-100 line mt-4 text-lg`}
         >
           {CalDiscount(product.price, product.discount).toLocaleString()}{' '}
           <span className='text-sm font-medium'>تومان</span>
         </p>
         <p
-          className={`${product.discount == 0 && 'hidden'} font-[vazir] text-base text-zinc-600`}
+          className={`${product.discount == 0 && 'hidden'} text-base text-zinc-600`}
         >
-          <span className='font-[vazir] line-through'>
-            {product.price.toLocaleString()}
-          </span>
+          <span className='line-through'>{product.price.toLocaleString()}</span>
           <span className='text-sm font-medium'> تومان</span>
         </p>
-        <Link href={`/products/${product.id}`} className='mr-auto mt-auto'>
+        <Link href={`/products/${product.id}`} className='mt-auto mr-auto'>
           <Button
             variant={'outline'}
             className='hover:bg-primary-200 not-md:hidden hover:text-white'
@@ -64,11 +62,10 @@ const ProductCardStore = ({
           </Button>
         </Link>
         {product.discount > 0 && (
-          <p className='absolute top-4 left-1 w-fit rounded-lg bg-red-500 p-0.5 px-1 font-[vazir] text-sm text-white md:right-4'>
+          <p className='absolute top-4 left-1 w-fit rounded-lg bg-red-500 p-0.5 px-1 text-sm text-white md:right-4'>
             {product.discount}% تخفیف
           </p>
         )}
-       
       </div>
     </div>
   );

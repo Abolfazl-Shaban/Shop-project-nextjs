@@ -12,7 +12,7 @@ export const homePageData = {
       title: 'محصولات جدید',
       description: '1403 مجموعه بهار',
       image: '/images/offer2.jpg',
-      link: '/products?new=true',
+      link: '/products?order=newest',
     },
   ],
   featuredProducts: [
@@ -143,4 +143,34 @@ export const productDetail = {
       image: '/images/products/laptop.png',
     },
   ],
+};
+
+export const userData = {
+  profile: {
+    name: "محمد رضایی",
+    email: "mohammad@example.com",
+    phone: "09123456789",
+    address: "تهران، خیابان آزادی، کوچه شهید فلانی، پلاک ۱۲"
+  },
+  orders: [
+    {
+      id: "ORD-1001",
+      date: "1402/12/15",
+      status: "تحویل شده",
+      total: 18750000,
+      items: [
+        { name: "هدفون بی‌سیم", quantity: 1 },
+        { name: "ماوس گیمینگ", quantity: 1 }
+      ]
+    },
+    {
+      id: "ORD-1002",
+      date: "1402/11/03",
+      status: "در حال ارسال",
+      total: 32500000,
+      items: [
+        { name: "لپ‌تاپ ایسوس", quantity: 1 }
+      ]
+    }
+  ]
 };

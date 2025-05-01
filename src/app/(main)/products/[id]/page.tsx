@@ -42,14 +42,14 @@ const ProductInfo = async ({ params }: { params: { id: string } }) => {
               <p className='text-dark-300 mt-2 text-sm'>
                 {productDetails.description}
               </p>
-              <p className='my-4 flex items-center gap-1 font-[vazir]'>
+              <p className='my-4 flex items-center gap-1'>
                 <Star fill='#FA8618' className='text-primary-100' size={24} />
                 {product?.rating}
               </p>
               <hr className='my-4 w-[120px] border-zinc-300' />
               <p className='text-sm font-medium'>
                 نظرات کاربران{' '}
-                <span className='text-primary-100 font-[vazir]'>
+                <span className='text-primary-100'>
                   {productDetails?.reviewCount} نظر
                 </span>
               </p>
@@ -69,20 +69,20 @@ const ProductInfo = async ({ params }: { params: { id: string } }) => {
           </h2>
           <div className='mr-auto flex items-center justify-end gap-2 pb-2 lg:flex-col lg:items-end'>
             {product.discount > 0 && (
-              <p className='mx-1 w-fit rounded-lg bg-red-500 p-0.5 px-2 font-[vazir] text-sm text-white'>
+              <p className='mx-1 w-fit rounded-lg bg-red-500 p-0.5 px-2 text-sm text-white'>
                 {product.discount}%<span className='not-lg:hidden'> تخفیف</span>
               </p>
             )}
             <div className='flex items-center gap-2 p-1 px-1.5'>
               <p
-                className={`${product.discount == 0 && 'hidden'} font-[vazir] text-base font-semibold text-zinc-600`}
+                className={`${product.discount == 0 && 'hidden'} text-base font-semibold text-zinc-600`}
               >
-                <span className='font-[vazir] line-through'>
+                <span className='line-through'>
                   {product.price.toLocaleString()}
                 </span>
               </p>
               <p
-                className={`${product.discount > 0 && ''} line font-[vazir] text-lg font-semibold`}
+                className={`${product.discount > 0 && ''} line text-lg font-semibold`}
               >
                 {CalDiscount(product.price, product.discount).toLocaleString()}{' '}
                 <span className='text-sm font-medium'>تومان</span>

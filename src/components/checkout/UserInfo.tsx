@@ -70,7 +70,7 @@ const UserInfo = () => {
           <Input
             className='py-5'
             id='locaddress'
-            placeholder='ادرس  سکونت خود را وارد کنید'
+            placeholder='ادرس سکونت خود را وارد کنید'
           />
         </div>
         <div className=' '>

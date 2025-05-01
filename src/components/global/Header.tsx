@@ -37,7 +37,7 @@ const Header = () => {
                 <span className='text-primary-300 text-base'>ONLINE</span>SHOP
               </p>
             </Link>
-          </div>
+          </div>          
         </div>
         <Navbar className={`hidden lg:flex`} />
         <div className='flex w-1/3 items-center justify-end gap-2'>
@@ -53,7 +53,7 @@ const Header = () => {
               </p>
             )}
           </div>
-          <User2 className='size-9 rounded-md border p-1.5 text-zinc-800 transition-all not-lg:hidden hover:bg-zinc-100' />
+          <User2 onClick={() => router.push('/account')} className='cursor-pointer size-9 rounded-md border p-1.5 text-zinc-800 transition-all not-lg:hidden hover:bg-zinc-100' />
 
           <Sheet>
             <SheetTrigger className='lg:hidden'>
@@ -65,6 +65,8 @@ const Header = () => {
               className='p-2 [&>button:last-child]:hidden'
             >
               <SheetTitle>
+                <div className='flex items-center justify-between'>
+
                 <div className='flex items-center'>
                   <Image
                     className='size-14 p-1'
@@ -79,6 +81,10 @@ const Header = () => {
                     SHOP
                   </p>
                 </div>
+                
+                <User2 onClick={() => router.push('/account')} className='cursor-pointer size-11 rounded-full border p-1.5 text-zinc-600 ' />
+
+                    </div>
               </SheetTitle>
               <form className='relative'>
                 <Input className='h-12 w-full' placeholder='جستجو محصولات' />

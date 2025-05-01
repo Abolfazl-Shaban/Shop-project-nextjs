@@ -16,7 +16,7 @@ const ProductCard = ({
   return (
     <div
       className={cn(
-        `relative flex h-[320px] min-w-[260px] max-w-[340px] flex-col items-start rounded-lg border border-zinc-200 bg-white p-4 pt-1 shadow`,
+        `relative flex h-[320px] max-w-[340px] min-w-[260px] flex-col items-start rounded-lg border border-zinc-200 bg-white p-4 pt-1 shadow`,
         className,
       )}
     >
@@ -34,16 +34,16 @@ const ProductCard = ({
       </Link>
       <h2 className='text-lg font-normal'>{product.name}</h2>
       <p
-        className={`${(!product.discount || product.discount == 0) && 'hidden'} text-dark-100 line mt-1 font-[vazir] text-lg`}
+        className={`${(!product.discount || product.discount == 0) && 'hidden'} text-dark-100 line mt-1 text-lg`}
       >
         {CalDiscount(product.price, product.discount).toLocaleString()}{' '}
         <span className='text-sm font-medium'>تومان</span>
       </p>
       <p
-        className={`${(product.discount && product.discount > 0) ? 'text-base text-zinc-600' : 'text-lg mt-4'} font-[vazir]  `}
+        className={`${product.discount && product.discount > 0 ? 'text-base text-zinc-600' : 'mt-4 text-lg'} `}
       >
         <span
-          className={`${product.discount && product.discount > 0 && 'line-through'} font-[vazir]`}
+          className={`${product.discount && product.discount > 0 && 'line-through'} `}
         >
           {product.price.toLocaleString()}
         </span>
@@ -56,15 +56,17 @@ const ProductCard = ({
         مشاهده
       </Button>
       {product.discount > 0 && (
-        <p className='absolute top-4 right-4 w-fit rounded-lg bg-red-500 p-0.5 px-1 font-[vazir] text-sm text-white'>
+        <p className='absolute top-4 right-4 w-fit rounded-lg bg-red-500 p-0.5 px-1 text-sm text-white'>
           {product.discount}% تخفیف
         </p>
       )}
-      
-      {product.rating && <p className='flex-center absolute top-6/12 left-2 gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 font-[vazir] text-sm'>
-        {product.rating}
-        <Star fill='#FA8618' className='text-primary-100' size={24} />
-      </p>}
+
+      {product.rating && (
+        <p className='flex-center absolute top-6/12 left-2 gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 text-sm'>
+          {product.rating}
+          <Star fill='#FA8618' className='text-primary-100' size={24} />
+        </p>
+      )}
     </div>
   );
 };

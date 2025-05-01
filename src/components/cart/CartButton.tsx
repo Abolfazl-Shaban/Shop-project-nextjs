@@ -16,25 +16,29 @@ const CartButton = ({ product }: { product: Product }) => {
         ?.getCartItems()
         ?.find((item) => item.product.id == product.id) ? (
         <div className='flex items-stretch gap-1'>
-          <div className='flex gap-1 items-center border rounded-lg overflow-hidden'>
+          <div className='flex items-center gap-1 overflow-hidden rounded-lg border'>
             <Button
               onClick={() => {
                 context?.addToCart(product);
               }}
               variant={null}
-              className='cursor-pointer h-full'
+              className='h-full cursor-pointer'
             >
               <Plus className='size-5' />
             </Button>
-            <p className='font-[vazir] font-semibold text-lg px-1'>{item?.quantity}</p>
+            <p className='px-1 text-lg font-semibold'>{item?.quantity}</p>
             <Button
               onClick={() => {
                 context?.removeFromCart(product);
               }}
               variant={null}
-              className='cursor-pointer h-full'
+              className='h-full cursor-pointer'
             >
-              {item && item?.quantity > 1 ? <Minus className='size-5' /> : <Trash2 className='size-5' />}
+              {item && item?.quantity > 1 ? (
+                <Minus className='size-5' />
+              ) : (
+                <Trash2 className='size-5' />
+              )}
             </Button>
           </div>
         </div>

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 const Navbar = ({className} : {className?: string}) => {
-  const pathname = usePathname();
+  const pathname =  '/' + usePathname().split('/')[1];
   return (
     <div className={cn('flex items-center gap-3',className) }>
       {navPaths.map((e, i) => (

@@ -37,9 +37,7 @@ const ProductCartButton = ({ product }: { product: Product }) => {
             >
               <Plus className='size-5' />
             </Button>
-            <p className='px-1 font-[vazir] text-lg font-semibold'>
-              {item?.quantity}
-            </p>
+            <p className='px-1 text-lg font-semibold'>{item?.quantity}</p>
             <Button
               onClick={() => {
                 context?.removeFromCart(product);

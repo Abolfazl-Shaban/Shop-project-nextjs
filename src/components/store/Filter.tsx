@@ -154,7 +154,7 @@ const Filter = ({
             );
           }}
         />
-        <p className='mt-2 text-center font-[vazir] text-sm'>
+        <p className='mt-2 text-center text-sm'>
           {priceRange[0].toLocaleString()} تومان تا{' '}
           {priceRange[1].toLocaleString()} تومان
         </p>

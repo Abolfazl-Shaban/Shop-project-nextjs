@@ -10,10 +10,43 @@ import ProductSlider from '@/components/Product/ProductSlider';
 import Link from 'next/link';
 import ProductCartButton from '@/components/ProductPage/ProductCartButton';
 
-const ProductInfo = async ({ params }: { params: { id: string } }) => {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const product: Product = await fetch(
+    `${SiteUrl}/api/products/${(await params).id}`,
+  ).then((res) => res.json());
+  if (!product) {
+    return {
+      title: 'محصول مورد نظر پیدا نشد!',
+      description: 'محصول مورد نظر پیدا نشد! لطفا به صفحه فروشگاه بروید.',
+    };
+  }
+
+  return {
+    title: product.name,
+    description: product.price.toLocaleString() + ' تومان',
+    keywords: [
+      product.name,
+      product.category,
+      product.brand,
+      product.price.toLocaleString() + ' تومان',
+    ],
+    authors: [{ name: 'فروشگاه آنلاین شاپ' }],
+    openGraph: {
+      images: [product.image],
+    },
+  };
+}
+
+const ProductInfo = async ({ params }: { params: Promise<{ id: string }> }) => {
   const [product, productDetails]: [Product, ProductDetail] = await Promise.all(
     [
-      fetch(`${SiteUrl}/api/products/${params.id}`).then((res) => res.json()),
+      fetch(`${SiteUrl}/api/products/${(await params).id}`).then((res) =>
+        res.json(),
+      ),
       fetch(`${SiteUrl}/api/productdetails`).then((res) => res.json()),
     ],
   );

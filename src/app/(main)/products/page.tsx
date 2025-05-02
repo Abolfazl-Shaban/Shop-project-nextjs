@@ -1,5 +1,3 @@
-'use server';
-
 import Filter from '@/components/store/Filter';
 import Order from '@/components/store/Order';
 import Pagination from '@/components/store/Pagination';
@@ -13,6 +11,13 @@ import {
 import { LucideFilter } from 'lucide-react';
 import { SiteUrl } from '../../../../constant';
 import { ReadonlyURLSearchParams } from 'next/navigation';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'لیست محصولات',
+  description:
+    'مشاهده و خرید انواع محصولات موجود در فروشگاه آنلاین شاپ با تنوع بالا و قیمت مناسب.',
+};
 
 const ProductsPage = async ({
   searchParams,
@@ -64,7 +69,9 @@ const ProductsPage = async ({
             <Order className='bg-zinc-100 p-3 not-md:hidden' />
           </div>
           {products.data.length == 0 ? (
-            <p className='text-dark-300 text-sm mt-12 text-center'>محصولی یافت نشد!</p>
+            <p className='text-dark-300 mt-12 text-center text-sm'>
+              محصولی یافت نشد!
+            </p>
           ) : (
             <>
               <Products products={products?.data} />

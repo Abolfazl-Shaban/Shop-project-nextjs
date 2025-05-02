@@ -1,7 +1,6 @@
 import { calculateCartTotals } from '@/app/utils/cartCalculations';
 import { CartItem } from '@/context/CartContext';
 import { cn } from '@/lib/utils';
-import { Button } from '../ui/button';
 
 export const CheckoutSummary = ({
   cart,

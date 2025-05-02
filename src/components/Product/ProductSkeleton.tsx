@@ -1,7 +1,3 @@
-import Image from 'next/image';
-import { Product } from './Product.type';
-import { Button } from '../ui/button';
-import { Star } from 'lucide-react';
 import { Skeleton } from '../ui/skeleton';
 
 const ProductSkeleton = () => {

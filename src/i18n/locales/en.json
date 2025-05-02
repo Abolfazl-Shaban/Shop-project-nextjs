@@ -1,0 +1,11 @@
+{
+  "header": {
+    "menu": {
+      "main": "Home",
+      "shop": "Shop",
+      "cart": "Cart",
+      "account": "Account"
+    },
+    "search": "Search products"
+  }
+}

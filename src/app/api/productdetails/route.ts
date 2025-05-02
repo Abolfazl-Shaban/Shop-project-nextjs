@@ -1,5 +1,5 @@
 import { productDetail } from "@/app/data/mockData";
 
-export async function GET(request: Request) {
+export async function GET() {
     return Response.json(productDetail)
 }

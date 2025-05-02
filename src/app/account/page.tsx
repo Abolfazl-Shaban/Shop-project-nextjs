@@ -1,16 +1,16 @@
 import Image from 'next/image';
-import { userData } from '../data/mockData';
 import { Button } from '@/components/ui/button';
 import { Edit3Icon } from 'lucide-react';
 import Link from 'next/link';
 import { MdOutlineChevronLeft } from 'react-icons/md';
+import { userData } from '@/app/data/mockData';
 
 const Account = () => {
   const user = userData.profile;
   return (
     <div>
       <h1 className='text font-bold'>حساب کاربری</h1>
-      <div className='my-4 flex items-center gap-2'>
+      <div className='my-4 flex flex-wrap items-center gap-2'>
         <div className='shrink-0'>
           <Image
             className='size-24 not-md:size-16 rounded-full'
@@ -20,7 +20,7 @@ const Account = () => {
             width={512}
           />
         </div>
-        <div className='flex grow flex-col gap-2'>
+        <div className='flex flex-wrap grow flex-col gap-2'>
           <p className='font-medium not-md:text-sm'>{user.name}</p>
           <p className='text-sm not-md:text-xs'>{user.email}</p>
         </div>

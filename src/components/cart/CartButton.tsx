@@ -4,9 +4,12 @@ import { useCart } from '@/context/CartContext';
 import { Button } from '../ui/button';
 import { Product } from '../Product/Product.type';
 import { Minus, Plus, Trash2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const CartButton = ({ product }: { product: Product }) => {
   const context = useCart();
+  const {t} = useTranslation();
+
 
   const item = context?.getCartItems().find((r) => r.product.id == product.id);
 
@@ -49,7 +52,7 @@ const CartButton = ({ product }: { product: Product }) => {
           }}
           className='border-primary-100 relative w-full cursor-pointer border-2 py-6 font-medium'
         >
-          افزورن به سبد خرید
+          {t('shop.add-to-cart')}
         </Button>
       )}
     </>

@@ -14,7 +14,6 @@ export const metadata: Metadata = {
 const Cart = () => {
   return (
     <div className='container mx-auto mt-4'>
-      <h2 className='p-2 text-lg font-medium'>سبد خرید</h2>
       <CartPage />
     </div>
   );

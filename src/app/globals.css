@@ -21,6 +21,11 @@
 @utility flex-center {
   @apply flex items-center justify-center gap-2;
 }
+@utility font-persianNum {
+  *{
+    font-family: 'vazir','vazirmatn';
+  }
+}
 @layer base{
   @font-face {
     font-family: 'vazir';
@@ -36,7 +41,7 @@
   unicode-range: U+30-39;
   }
   *{
-    font-family: 'vazir','vazirmatn';
+    font-family: 'vazirmatn';
   }
 }
 

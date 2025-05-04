@@ -5,8 +5,10 @@ import Image from 'next/image';
 import { userData } from '@/app/data/mockData';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 
 const Settings = () => {
+  const { t } = useTranslation();
   const user = userData.profile;
   const [imgPreview, setImgPreview] = useState('/images/user.png');
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -26,7 +28,7 @@ const Settings = () => {
 
   return (
     <div>
-      <h2 className='text font-bold'>تنظیمات حساب</h2>
+      <h2 className='text font-bold'>{t('account.settings.title')}</h2>
       <div className='mt-4 grid grid-cols-2 gap-8'>
         <div className='relative flex flex-col items-center'>
           <Image
@@ -41,7 +43,7 @@ const Settings = () => {
             className='text-primary-200 mt-2 cursor-pointer text-sm hover:underline'
             onClick={handleImageClick}
           >
-            تغییر عکس
+            {t('account.settings.changePhoto')}
           </p>
           <Input
             type='file'
@@ -53,42 +55,52 @@ const Settings = () => {
         </div>
 
         <div className='my-auto w-full max-w-sm pb-8'>
-          <label className='text-sm font-medium'>نام</label>
+          <label className='text-sm font-medium'>
+            {t('account.settings.name')}
+          </label>
           <Input
-            placeholder='نام نمایشی'
+            placeholder={t('account.settings.namePlaceholder')}
             type='text'
             defaultValue={user.name}
             className='w-full'
           />
         </div>
-        <div className='my-auto w-full max-w-sm '>
-          <label className='text-sm font-medium'>ایمیل</label>
+        <div className='my-auto w-full max-w-sm'>
+          <label className='text-sm font-medium'>
+            {t('account.settings.email')}
+          </label>
           <Input
-            placeholder='ایمیل شما'
+            placeholder={t('account.settings.emailPlaceholder')}
             type='email'
             defaultValue={user.email}
             className='w-full'
           />
         </div>
-        <div className='my-auto w-full max-w-sm '>
-          <label className='text-sm font-medium'>شماره همراه</label>
+        <div className='my-auto w-full max-w-sm'>
+          <label className='text-sm font-medium'>
+            {t('account.settings.phone')}
+          </label>
           <Input
-            placeholder='شماره همراه شما'
+            placeholder={t('account.settings.phonePlaceholder')}
             type='text'
             defaultValue={user.phone}
             className='w-full'
           />
         </div>
-        <div className='my-auto w-full max-w-[904px] col-span-2' >
-          <label className='text-sm font-medium'>ادرس</label>
+        <div className='col-span-2 my-auto w-full max-w-[904px]'>
+          <label className='text-sm font-medium'>
+            {t('account.settings.address')}
+          </label>
           <Input
-            placeholder='ادرس شما'
+            placeholder={t('account.settings.addressPlaceholder')}
             type='text'
             defaultValue={user.address}
             className='w-full'
           />
         </div>
-        <Button className='mr-auto col-span-2'>ذخیره تغییرات</Button>
+        <Button className='col-span-2 mr-auto'>
+          {t('account.settings.saveChanges')}
+        </Button>
       </div>
     </div>
   );

@@ -19,6 +19,7 @@ export const homePageData = {
     {
       id: 101,
       name: 'لپتاپ ایسوس',
+      Ename: 'Asus Laptop',
       price: 25000000,
       discount: 15,
       image: '/images/products/laptop.png',
@@ -27,6 +28,7 @@ export const homePageData = {
     {
       id: 102,
       name: 'هدفون بیسیم',
+      Ename: 'Wireless Headphone',
       price: 4500000,
       discount: 0,
       image: '/images/products/headphone.png',
@@ -35,6 +37,7 @@ export const homePageData = {
     {
       id: 103,
       name: 'موس بیسیم',
+      Ename: 'Wireless Mouse',
       price: 4500000,
       discount: 25,
       image: '/images/products/mouse.png',
@@ -43,6 +46,7 @@ export const homePageData = {
     {
       id: 104,
       name: ' گوشی سامسونگ',
+      Ename: 'Mobile Samsung',
       price: 4500000,
       discount: 0,
       image: '/images/products/mobile.png',
@@ -51,6 +55,7 @@ export const homePageData = {
     {
       id: 105,
       name: 'تلویزیون شیائومی',
+      Ename: 'Xiaomi TV',
       price: 4500000,
       discount: 10,
       image: '/images/products/tv.png',
@@ -62,14 +67,14 @@ export const homePageData = {
 export const productsData = {
   filters: {
     categories: [
-      { id: 'electric', name: 'الکترونیک', count: 42 },
-      { id: 'clothing', name: 'پوشاک', count: 36 },
-      { id: 'kitchen', name: 'خانه و آشپزخانه', count: 28 },
+      { id: 'electric', name: 'الکترونیک', Ename: 'Electric', count: 42 },
+      { id: 'clothing', name: 'پوشاک', Ename: 'Clothing', count: 36 },
+      { id: 'kitchen', name: 'خانه و آشپزخانه', Ename: 'Kitchen', count: 28 },
     ],
     brands: [
-      { id: 1, name: 'سامسونگ', count: 15 },
-      { id: 2, name: 'اپل', count: 12 },
-      { id: 3, name: 'هواوی', count: 8 },
+      { id: 1, name: 'سامسونگ', Ename: 'Samsung', count: 15 },
+      { id: 2, name: 'اپل', Ename: 'Apple', count: 12 },
+      { id: 3, name: 'هواوی', Ename: 'Huawei', count: 8 },
     ],
   },
   products: Array(15)
@@ -77,6 +82,7 @@ export const productsData = {
     .map((_, i) => ({
       id: 200 + i,
       name: `محصول نمونه ${i + 1}`,
+      Ename: `Example Product ${i + 1}`,
       price: Math.floor(Math.random() * 100) * 100000 + 1000000,
       discount: i % 3 === 0 ? Math.floor(Math.random() * 30) + 10 : 0,
       image: `/images/product-sample-${(i % 5) + 1}.png`,
@@ -89,6 +95,7 @@ export const productsData = {
 export const productDetail = {
   id: 101,
   name: 'لپ‌تاپ ایسوس مدل X543',
+  Ename: 'Laptop Asus X543',
   price: 25000000,
   discount: 15,
   finalPrice: 21250000,
@@ -101,25 +108,32 @@ export const productDetail = {
   reviewCount: 24,
   description:
     'لپ‌تاپ ایسوس با پردازنده Core i7 نسل ۱۱، ۱۶ گیگابایت رم و ۵۱۲ گیگابایت SSD',
+  Edescription:
+    'Asus laptop with 11th generation Core i7 processor, 16GB RAM and 512GB SSD',
   specifications: [
     {
       title: 'پردازنده',
+      Etitle: 'Cpu',
       value: 'Core i7 1165G7',
     },
     {
       title: 'حافظه رم',
+      Etitle: 'Ram',
       value: '16GB DDR4',
     },
     {
       title: 'ذخیره‌سازی',
+      Etitle: 'Disk',
       value: '512GB SSD',
     },
     {
       title: 'صفحه نمایش',
-      value: '15.6 اینچ Full HD',
+      Etitle: 'Display',
+      value: '15.6 Inch Full HD',
     },
     {
       title: 'سیستم عامل',
+      Etitle: 'OS',
       value: 'Windows 11 Home',
     },
   ],
@@ -127,18 +141,21 @@ export const productDetail = {
     {
       id: 103,
       name: 'لپ‌تاپ دل',
+      Ename: 'Laptop Dell',
       price: 28000000,
       image: '/images/products/laptop.png',
     },
     {
       id: 104,
       name: 'لپ‌تاپ لنوو',
+      Ename: 'Laptop Lenovo',
       price: 23000000,
       image: '/images/products/laptop.png',
     },
     {
       id: 105,
       name: 'لپ‌تاپ ایسوس',
+      Ename: 'Laptop Asus',
       price: 32000000,
       image: '/images/products/laptop.png',
     },
@@ -147,30 +164,30 @@ export const productDetail = {
 
 export const userData = {
   profile: {
-    name: "محمد رضایی",
-    email: "mohammad@example.com",
-    phone: "09123456789",
-    address: "تهران، خیابان آزادی، کوچه شهید فلانی، پلاک ۱۲"
+    name: 'محمد رضایی',
+    email: 'mohammad@example.com',
+    phone: '09123456789',
+    address: 'تهران، خیابان آزادی، کوچه شهید فلانی، پلاک ۱۲',
   },
   orders: [
     {
-      id: "ORD-1001",
-      date: "1402/12/15",
-      status: "تحویل شده",
+      id: 'ORD-1001',
+      date: '1402/12/15',
+      status: 'تحویل شده',
+      Estatus: 'Delivered',
       total: 18750000,
       items: [
-        { name: "هدفون بی‌سیم", quantity: 1 },
-        { name: "ماوس گیمینگ", quantity: 1 }
-      ]
+        { name: 'هدفون بی‌سیم', Ename: 'Wireless Headphone', quantity: 1 },
+        { name: 'ماوس گیمینگ', Ename: 'Gaming Mouse', quantity: 1 },
+      ],
     },
     {
-      id: "ORD-1002",
-      date: "1402/11/03",
-      status: "در حال ارسال",
+      id: 'ORD-1002',
+      date: '1402/11/03',
+      status: 'در حال ارسال',
+      Estatus: 'Sending',
       total: 32500000,
-      items: [
-        { name: "لپ‌تاپ ایسوس", quantity: 1 }
-      ]
-    }
-  ]
+      items: [{ name: 'لپ‌تاپ ایسوس', Ename: 'Asus Laptop', quantity: 1 }],
+    },
+  ],
 };

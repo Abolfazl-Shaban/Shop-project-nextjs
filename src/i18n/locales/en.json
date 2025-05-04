@@ -1,4 +1,12 @@
 {
+  "global": {
+    "font": "",
+    "toman": "Toamn",
+    "discount": "OFF",
+    "view": "View",
+    "shop": "Shop",
+    "cart": "Cart"
+  },
   "header": {
     "menu": {
       "main": "Home",
@@ -7,5 +15,200 @@
       "account": "Account"
     },
     "search": "Search products"
+  },
+  "footer": {
+    "enter-email": "Enter your email",
+    "submit-email": "Submit",
+    "discount-msg": "Stay updated with discounts and rewards.",
+    "desc": "The largest online store in all of Iran",
+    "useful-links": "Useful Links",
+    "categories-title": "Categories",
+    "contact-us": "Contact Us",
+    "copyright": "All rights reserved for <0>Online Shop</0>.",
+    "links": {
+      "home": "Home",
+      "shop": "Shop",
+      "cart": "Cart",
+      "checkout": "Checkout"
+    },
+    "categories": {
+      "electric": "Electronics",
+      "clothing": "Clothing",
+      "kitchen": "Home & Kitchen"
+    }
+  },
+  "home": {
+    "why-us-title": "Why Us?",
+    "why-us-body": "In the crowded world of online shopping, we strive to create a unique and reliable experience for you. By offering a wide range of products, high quality, fair prices, and genuine support, our goal is not just selling, but your satisfaction and peace of mind. We pay attention to every detail, from packaging to delivery. This is the place where you can shop confidently, comfortably, and always be supported.",
+    "categoriesTitle": "<strong>Popular</strong> Categories",
+    "categories": {
+      "clothing": "Clothing",
+      "kitchen": "Home & Kitchen",
+      "electric": "Electronics"
+    },
+    "specialProductsTitle": "<highlight>Special</highlight> Products",
+    "popular-products": "Popular <highlight>Products</highlight>"
+  },
+  "shop": {
+    "add-to-cart": "Add to Cart",
+    "view-cart": "View Cart",
+    "sort": "Sort",
+    "filter": "Filters",
+    "category": "Category",
+    "categories-title": "Categories",
+    "select-category": "Select Category",
+    "price-range": "Price Range",
+    "brand": "Brand",
+    "page": {
+      "next": "Next",
+      "previous": "Previous"
+    },
+    "sorts": {
+      "newest": "Newest",
+      "cheapest": "Cheapest",
+      "expensive": "Expensive",
+      "popular": "Most Popular"
+    },
+    "categories": {
+      "clothing": "Clothing",
+      "kitchen": "Home & Kitchen",
+      "electric": "Electronics"
+    },
+    "no-product-fount": "No product found!",
+    "remove-all": "Remove All",
+    "filter-price-from": "Toman to",
+    "filter-price-to": "Toman"
+  },
+  "product": {
+    "not-found-title": "Product not found!",
+    "not-found-subtitle": "You can go to the store page",
+    "user-reviews": "User reviews",
+    "review-count": "Review",
+    "related-products": "Related products",
+    "description": "Description",
+    "specifications": "Specifications",
+    "comments": "Comments",
+    "month-ago": "{{value}} month ago"
+  },
+  "cart": {
+    "empty-title": "Your shopping cart is empty!",
+    "empty-description": "To order the product, you can go to the <0>Store</0> page.",
+    "invoice": "Invoice",
+    "confirm": "Confirm and continue",
+    "subtotal": "Product price",
+    "shipping": "Packaging and shipping",
+    "tax": "10% tax",
+    "total": "Grand total"
+  },
+  "checkout": {
+    "invoice": "Invoice",
+    "payment": "Payment",
+    "orderSummary": {
+      "title": "Order Summary",
+      "itemCount": "{{count}} items"
+    },
+    "paymentMethods": {
+      "title": "Payment Methods",
+      "online": {
+        "title": "Online",
+        "desc": "Online payment via Shaparak gateway."
+      },
+      "cartToCart": {
+        "title": "Card to Card",
+        "desc": "Payment via bank transfer."
+      },
+      "darMahal": {
+        "title": "Cash on Delivery",
+        "desc": "Pay when receiving the product."
+      }
+    },
+    "userInfo": {
+      "title": "Your Information",
+      "fullName": {
+        "label": "Full Name",
+        "placeholder": "Enter your full name"
+      },
+      "phone": {
+        "label": "Phone Number",
+        "placeholder": "Enter your phone number"
+      },
+      "province": {
+        "label": "Province",
+        "placeholder": "Select your province"
+      },
+      "city": {
+        "label": "City",
+        "placeholder": "Select your city"
+      },
+      "address": {
+        "label": "Address",
+        "placeholder": "Enter your residence address"
+      },
+      "postalCode": {
+        "label": "Postal Code",
+        "placeholder": "Enter your postal code"
+      },
+      "plate": {
+        "label": "Plate",
+        "placeholder": "Enter your building number"
+      }
+    },
+    "provinces": {
+      "khorasanrazavi": "Khorasan Razavi",
+      "tehran": "Tehran",
+      "esfahan": "Isfahan",
+      "ghom": "Qom",
+      "ardbil": "Ardabil"
+    },
+    "cities": {
+      "mashhad": "Mashhad",
+      "torbat": "Torbat Heydariyeh",
+      "nishabor": "Neyshabur",
+      "kashmar": "Kashmar",
+      "tehran": "Tehran",
+      "esfahan": "Isfahan",
+      "karaj": "Karaj",
+      "ardbil": "Ardabil"
+    }
+  },
+  "account": {
+    "title": "Account",
+    "edit": "Edit Info",
+    "ordersTitle": "Recent Orders",
+    "noOrders": "No orders have been placed yet!",
+    "orderStatus": {
+      "sending": "In Progress",
+      "sendingDesc": "Orders being shipped",
+      "delivered": "Delivered",
+      "deliveredDesc": "Orders delivered",
+      "returned": "Returned",
+      "returnedDesc": "Orders returned"
+    },
+    "allOrders": "All Orders",
+    "items": "Items",
+    "settings": {
+      "title": "Account Settings",
+      "changePhoto": "Change Photo",
+      "name": "Name",
+      "namePlaceholder": "Display name",
+      "email": "Email",
+      "emailPlaceholder": "Your email",
+      "phone": "Phone",
+      "phonePlaceholder": "Your phone number",
+      "address": "Address",
+      "addressPlaceholder": "Your address",
+      "saveChanges": "Save Changes"
+    },
+    "logout": {
+      "title": "Logout",
+      "confirmation": "Are you sure you want to log out?",
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
+  "notfound": {
+    "title": "Page not found",
+    "desc": "Unfortunately, the page you were looking for does not exist.",
+    "back": "Home"
   }
 }

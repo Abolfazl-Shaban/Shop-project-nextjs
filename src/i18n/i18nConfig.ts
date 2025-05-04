@@ -1,6 +1,7 @@
-const i18nConfig = {
+export const i18nConfig = {
     locales: ['en', 'fa'],
-    defaultLocale: 'en'
+    defaultLocale: 'fa',
+  localeDetection: false,
+  path: './src/i18n/locales',
   };
   
-  module.exports = i18nConfig;

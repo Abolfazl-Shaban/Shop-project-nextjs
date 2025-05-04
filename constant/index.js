@@ -1,18 +1,18 @@
 export const navPaths = [
   {
-    name: 'صفحه اصلی',
+    name: 'header.menu.main',
     path: '/',
   },
   {
-    name: 'فروشگاه',
+    name: 'header.menu.shop',
     path: '/products',
   },
   {
-    name: 'سبد خرید',
+    name: 'header.menu.cart',
     path: '/cart',
   },
   {
-    name:  'حساب کاربری',
+    name:  'header.menu.account',
     path: '/account',
   },
 ];

@@ -1,96 +1,127 @@
-import { Input } from "../ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+'use client';
+import { Input } from '../ui/input';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
+import { useTranslation } from 'react-i18next';
 
 const UserInfo = () => {
+  const { t , i18n} = useTranslation();
+
   return (
     <div>
-      <h2 className='p-2  font-medium not-md:text-sm'>اطلاعات شما</h2>
+      <h2 className='p-2 font-medium not-md:text-sm'>
+        {t('checkout.userInfo.title')}
+      </h2>
       <div className='text-dark-300 grid grid-cols-2 gap-6 rounded-xl border p-4 mb-2'>
-        <div className='t'>
+        {/* Full Name */}
+        <div>
           <label className='p-1 px-3 text-sm' htmlFor='name'>
-            نام و نام خانوادگی
+            {t('checkout.userInfo.fullName.label')}
           </label>
           <Input
             className='py-5'
             id='name'
-            placeholder='نام خود را وارد کنید'
+            placeholder={t('checkout.userInfo.fullName.placeholder')}
           />
         </div>
-        <div className=''>
+
+        {/* Phone */}
+        <div>
           <label className='p-1 px-3 text-sm' htmlFor='phone'>
-            شماره همراه
+            {t('checkout.userInfo.phone.label')}
           </label>
           <Input
             className='py-5'
             id='phone'
-            placeholder='شماره همراه خود را وارد کنید'
+            placeholder={t('checkout.userInfo.phone.placeholder')}
           />
         </div>
-        <div className=' '>
+
+        {/* Province */}
+        <div>
           <label className='p-1 px-3 text-sm' htmlFor='ostan'>
-            استان
+            {t('checkout.userInfo.province.label')}
           </label>
-          <Select dir='rtl'>
+          <Select dir={i18n.language == 'en' ? 'ltr' : 'rtl'}>
             <SelectTrigger id='ostan' className='w-full py-5'>
-              <SelectValue placeholder='استان خود را انتخاب کنید' />
+              <SelectValue
+                placeholder={t('checkout.userInfo.province.placeholder')}
+              />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value='khorasanrazavi'>خراسان رضوی</SelectItem>
-              <SelectItem value='tehran'>تهران</SelectItem>
-              <SelectItem value='esfahan'>اصفهان</SelectItem>
-              <SelectItem value='ghom'>قوم</SelectItem>
-              <SelectItem value='ardbil'>اردبیل</SelectItem>
+              <SelectItem value='khorasanrazavi'>
+                {t('checkout.provinces.khorasanrazavi')}
+              </SelectItem>
+              <SelectItem value='tehran'>{t('checkout.provinces.tehran')}</SelectItem>
+              <SelectItem value='esfahan'>{t('checkout.provinces.esfahan')}</SelectItem>
+              <SelectItem value='ghom'>{t('checkout.provinces.ghom')}</SelectItem>
+              <SelectItem value='ardbil'>{t('checkout.provinces.ardbil')}</SelectItem>
             </SelectContent>
           </Select>
         </div>
-        <div className=' '>
+
+        {/* City */}
+        <div>
           <label className='p-1 px-3 text-sm' htmlFor='city'>
-            شهر
+            {t('checkout.userInfo.city.label')}
           </label>
-          <Select dir='rtl'>
+          <Select dir={i18n.language == 'en' ? 'ltr' : 'rtl'}>
             <SelectTrigger id='city' className='w-full py-5'>
-              <SelectValue placeholder='شهر خود را انتخاب کنید' />
+              <SelectValue
+                placeholder={t('checkout.userInfo.city.placeholder')}
+              />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value='mashhad'>مشهد</SelectItem>
-              <SelectItem value='torbat'>تربت حیدریه</SelectItem>
-              <SelectItem value='nishabor'>نیشابور</SelectItem>
-              <SelectItem value='kashmar'>کاشمر</SelectItem>
-              <SelectItem value='tehran'>تهران</SelectItem>
-              <SelectItem value='esfahan'>اصفهان</SelectItem>
-              <SelectItem value='karaj'>کرج</SelectItem>
-              <SelectItem value='ardbil'>اردبیل</SelectItem>
+              <SelectItem value='mashhad'>{t('checkout.cities.mashhad')}</SelectItem>
+              <SelectItem value='torbat'>{t('checkout.cities.torbat')}</SelectItem>
+              <SelectItem value='nishabor'>{t('checkout.cities.nishabor')}</SelectItem>
+              <SelectItem value='kashmar'>{t('checkout.cities.kashmar')}</SelectItem>
+              <SelectItem value='tehran'>{t('checkout.cities.tehran')}</SelectItem>
+              <SelectItem value='esfahan'>{t('checkout.cities.esfahan')}</SelectItem>
+              <SelectItem value='karaj'>{t('checkout.cities.karaj')}</SelectItem>
+              <SelectItem value='ardbil'>{t('checkout.cities.ardbil')}</SelectItem>
             </SelectContent>
           </Select>
         </div>
+
+        {/* Address */}
         <div className='col-span-2'>
           <label className='p-1 px-3 text-sm' htmlFor='locaddress'>
-            آدرس
+            {t('checkout.userInfo.address.label')}
           </label>
           <Input
             className='py-5'
             id='locaddress'
-            placeholder='ادرس سکونت خود را وارد کنید'
+            placeholder={t('checkout.userInfo.address.placeholder')}
           />
         </div>
-        <div className=' '>
+
+        {/* Postal Code */}
+        <div>
           <label className='p-1 px-3 text-sm' htmlFor='postalcode'>
-            کد پستی
+            {t('checkout.userInfo.postalCode.label')}
           </label>
           <Input
             className='py-5'
             id='postalcode'
-            placeholder='کد پستی خود را وارد کنید'
+            placeholder={t('checkout.userInfo.postalCode.placeholder')}
           />
         </div>
-        <div className=' '>
+
+        {/* Plate */}
+        <div>
           <label className='p-1 px-3 text-sm' htmlFor='plate'>
-            پلاک
+            {t('checkout.userInfo.plate.label')}
           </label>
           <Input
             className='py-5'
             id='plate'
-            placeholder='پلاک خود را وارد کنید'
+            placeholder={t('checkout.userInfo.plate.placeholder')}
           />
         </div>
       </div>

@@ -4,9 +4,11 @@ import Link from 'next/link';
 import { navPaths } from '../../../constant';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 const NavbarMenu = ({ className }: { className?: string }) => {
-  const pathname =  '/' + usePathname().split('/')[1];
+  const pathname = usePathname().replace(/^\/(en|fa)/, '') || '/';
+  const { t } = useTranslation();
 
   return (
     <div className={cn('flex flex-col', className)}>
@@ -16,7 +18,7 @@ const NavbarMenu = ({ className }: { className?: string }) => {
           href={e.path}
           className={`${e.path == pathname ? 'text-primary-200' : 'group'} relative border-b p-3 text-nowrap`}
         >
-          {e.name}
+          {t(e.name)}
         </Link>
       ))}
     </div>

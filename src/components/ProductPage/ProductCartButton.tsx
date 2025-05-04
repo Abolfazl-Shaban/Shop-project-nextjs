@@ -5,10 +5,12 @@ import { Button } from '../ui/button';
 import { Product } from '../Product/Product.type';
 import { ArrowLeft, Minus, Plus, Trash2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 
 const ProductCartButton = ({ product }: { product: Product }) => {
   const context = useCart();
   const router = useRouter();
+  const { t } = useTranslation();
 
   const item = context?.getCartItems().find((r) => r.product.id == product.id);
 
@@ -24,7 +26,7 @@ const ProductCartButton = ({ product }: { product: Product }) => {
             }}
             className='border-primary-100 hover:bg-primary-100/10 text-primary-100 relative grow cursor-pointer border-2 bg-transparent py-6 font-medium'
           >
-            مشاهده سبد خرید
+            {t('shop.view-cart')}
             <ArrowLeft />
           </Button>
           <div className='flex items-center gap-1 overflow-hidden rounded-lg border'>
@@ -60,7 +62,7 @@ const ProductCartButton = ({ product }: { product: Product }) => {
           }}
           className='border-primary-100 relative w-full cursor-pointer border-2 py-6 font-medium'
         >
-          افزورن به سبد خرید
+          {t('shop.add-to-cart')}
         </Button>
       )}
     </>

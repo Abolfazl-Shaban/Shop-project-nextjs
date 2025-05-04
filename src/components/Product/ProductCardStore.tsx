@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image';
 import { Product } from './Product.type';
 import { Button } from '../ui/button';
@@ -5,6 +7,7 @@ import { CalDiscount } from '@/app/utils/calDiscount';
 import { cn } from '@/lib/utils';
 import { Star } from 'lucide-react';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 const ProductCardStore = ({
   product,
@@ -13,6 +16,7 @@ const ProductCardStore = ({
   product: Product;
   className?: string;
 }) => {
+  const { t, i18n } = useTranslation();
   return (
     <div
       className={cn(
@@ -32,38 +36,38 @@ const ProductCardStore = ({
           width={512}
           height={512}
         />
-        <p className='flex-center absolute bottom-8 left-1/3 h-fit w-fit gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 text-sm not-md:-right-8 not-md:bottom-0 md:top-6/12 md:left-2'>
+        <p className='flex-center absolute bottom-8 end-1/3 h-fit w-fit gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 text-sm not-md:-start-8 not-md:bottom-0 md:top-6/12 md:end-2'>
           {product.rating}
           <Star fill='#FA8618' className='text-primary-100' size={24} />
         </p>
       </Link>
       <div className='flex h-full grow flex-col justify-center md:w-full'>
         <Link href={`/products/${product.id}`}>
-          <h2 className='text-lg font-normal'>{product.name}</h2>
+          <h2 className='text-lg font-normal'>{i18n.language == 'en' ? product.Ename : product.name}</h2>
         </Link>
         <p
           className={`${product.discount > 0 && ''} text-dark-100 line mt-4 text-lg`}
         >
           {CalDiscount(product.price, product.discount).toLocaleString()}{' '}
-          <span className='text-sm font-medium'>تومان</span>
+          <span className='text-sm font-medium'>{t('global.toman')}</span>
         </p>
         <p
           className={`${product.discount == 0 && 'hidden'} text-base text-zinc-600`}
         >
           <span className='line-through'>{product.price.toLocaleString()}</span>
-          <span className='text-sm font-medium'> تومان</span>
+          <span className='text-sm font-medium'> {t('global.toman')}</span>
         </p>
-        <Link href={`/products/${product.id}`} className='mt-auto mr-auto'>
+        <Link href={`/products/${product.id}`} className='mt-auto ms-auto'>
           <Button
             variant={'outline'}
             className='hover:bg-primary-200 not-md:hidden hover:text-white'
           >
-            مشاهده
+            {t('global.view')}
           </Button>
         </Link>
         {product.discount > 0 && (
-          <p className='absolute top-4 left-1 w-fit rounded-lg bg-red-500 p-0.5 px-1 text-sm text-white md:right-4'>
-            {product.discount}% تخفیف
+          <p className='absolute top-4 end-1 w-fit rounded-lg bg-red-500 p-0.5 px-1 text-sm text-white md:start-4'>
+            {product.discount}% {t('global.discount')}
           </p>
         )}
       </div>

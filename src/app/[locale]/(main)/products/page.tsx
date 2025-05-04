@@ -9,9 +9,10 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { LucideFilter } from 'lucide-react';
-import { SiteUrl } from '../../../../constant';
+import { SiteUrl } from '../../../../../constant';
 import { ReadonlyURLSearchParams } from 'next/navigation';
 import { Metadata } from 'next';
+import { getTranslation } from '@/i18n/i18n-server';
 
 export const metadata: Metadata = {
   title: 'لیست محصولات',
@@ -21,8 +22,10 @@ export const metadata: Metadata = {
 
 const ProductsPage = async ({
   searchParams,
+  params,
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  params: Promise<{ locale: string }>;
 }) => {
   const query = new URLSearchParams(
     (await searchParams) as never,
@@ -37,10 +40,12 @@ const ProductsPage = async ({
     fetch(`${SiteUrl}/api/products/pricerange`).then((res) => res.json()),
   ]);
 
+  const t = await getTranslation((await params).locale);
+
   return (
     <>
       <div className='relative container mx-auto my-24 flex items-stretch gap-6 p-5'>
-        <div className='sticky top-20 h-[400px] w-[280px] rounded-lg border not-md:hidden'>
+        <div className='sticky top-20 h-fit w-[280px] rounded-lg border not-md:hidden'>
           <Filter
             categories={categories}
             brands={brands}
@@ -53,10 +58,13 @@ const ProductsPage = async ({
               <SheetTrigger className='md:hidden'>
                 <div className='bg-primary-100 flex items-center gap-2 rounded-lg p-3 text-sm font-medium text-white'>
                   <LucideFilter className='size-7' />
-                  <span className=''>فیلتر ها</span>
+                  <span className=''>{t('shop.filter')}</span>
                 </div>
               </SheetTrigger>
-              <SheetContent>
+              <SheetContent
+              
+              side={(await params).locale == 'en' ? 'left' : 'right'}
+              >
                 <SheetTitle />
                 <Filter
                   className='md:hidden'
@@ -69,9 +77,7 @@ const ProductsPage = async ({
             <Order className='bg-zinc-100 p-3 not-md:hidden' />
           </div>
           {products.data.length == 0 ? (
-            <p className='text-dark-300 mt-12 text-center text-sm'>
-              محصولی یافت نشد!
-            </p>
+            <p className='text-dark-300 mt-12 text-center text-sm'>{t('shop.no-product-found')}</p>
           ) : (
             <>
               <Products products={products?.data} />

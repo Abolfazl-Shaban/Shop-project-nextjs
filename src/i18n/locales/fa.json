@@ -1,4 +1,12 @@
 {
+  "global": {
+    "font": "font-persianNum",
+    "toman": "تومان",
+    "discount": "تخفیف",
+    "view": "مشاهده",
+    "shop": "فروشگاه",
+    "cart": "سبد خرید"
+  },
   "header": {
     "menu": {
       "main": "صفحه اصلی",
@@ -7,5 +15,200 @@
       "account": "حساب کاربری"
     },
     "search": "جستجو محصولات"
+  },
+  "footer": {
+    "enter-email": "ایمیل خود را وارد کنید",
+    "submit-email": "ارسال",
+    "discount-msg": "از تخفیف ها و امتیاز ها با خبر شوید.",
+    "desc": "بزرگترین فروشگاه اینترنتی در تمام ایران",
+    "useful-links": "لینک های مفید",
+    "categories-title": "دسته‌بندی ها",
+    "contact-us": "تماس باما",
+    "copyright": "تمامی حقوق وب سایت برای <0>فروشگاه آنلاین شاپ</0> محفوظ است.",
+    "links": {
+      "home": "خانه",
+      "shop": "فروشگاه",
+      "cart": "سبد خرید",
+      "checkout": "تسویه حساب"
+    },
+    "categories": {
+      "electric": "الکترینیکی",
+      "clothing": "پوشاک",
+      "kitchen": "خانه و اشپز خانه"
+    }
+  },
+  "home": {
+    "why-us-title": "چرا ما؟",
+    "why-us-body": "در دنیای شلوغ خریدهای آنلاین، ما تلاش کرده‌ایم تجربه‌ای متفاوت و قابل اعتماد برای شما بسازیم. با ارائه محصولاتی متنوع، کیفیت بالا، قیمت‌های منصفانه و پشتیبانی واقعی، هدف ما فقط فروش نیست، بلکه رضایت و آرامش خاطر شماست. ما به جزئیات اهمیت می‌دهیم، از بسته‌بندی تا تحویل. اینجا جایی‌ست که می‌توانید با اطمینان انتخاب کنید، راحت خرید کنید و همیشه پشتیبانی شوید.",
+    "categoriesTitle": "دسته بندی های <strong>محبوب</strong>",
+    "categories": {
+      "clothing": "پوشاک",
+      "kitchen": "خانه و اشپزخانه",
+      "electric": "الکترونیکی"
+    },
+    "specialProductsTitle": "محصولات <highlight>ویژه</highlight>",
+    "popular-products": "محصولات <highlight>محبوب</highlight>"
+  },
+  "shop": {
+    "add-to-cart": "افزورن به سبد خرید",
+    "view-cart": "مشاهده سبد خرید",
+    "sort": "ترتیب",
+    "filter": "فیلتر ها",
+    "category": "دسته‌بندی",
+    "categories-title": "دسته‌بندی ها",
+    "select-category": "انتخاب دسته‌بندی",
+    "price-range": "محدوده قیمت",
+    "brand": "برند",
+    "page": {
+      "next": "بعدی",
+      "previous": "قبلی"
+    },
+    "sorts": {
+      "newest": "جدیدترین",
+      "cheapest": "ارزان‌ترین",
+      "expensive": "گران‌ترن",
+      "popular": "محبوب‌ترین"
+    },
+    "categories": {
+      "clothing": "پوشاک",
+      "kitchen": "خانه و اشپزخانه",
+      "electric": "الکترونیکی"
+    },
+    "no-product-fount": "محصولی پیدا نشد!",
+    "remove-all": "حذف همه",
+    "filter-price-from": "تومان تا",
+    "filter-price-to": "تومان"
+  },
+  "product": {
+    "not-found-title": "محصول مورد نظر پیدا نشد!",
+    "not-found-subtitle": "میتوانید به صفحه فروشگاه بروید",
+    "user-reviews": "نظرات کاربران",
+    "review-count": "نظر",
+    "related-products": "محصولات مرتبط",
+    "description": "توضیخات",
+    "specifications": "مشخصات",
+    "comments": "نظرات",
+    "month-ago": "{{value}} ماه پیش"
+  },
+  "cart": {
+    "empty-title": "سبد خرید شما خالی است!",
+    "empty-description": "برای سفارش محصول میتوانید به صفحه <0>فروشگاه</0> بروید.",
+    "invoice": "صورتحساب",
+    "confirm": "تایید و ادامه",
+    "subtotal": "قیمت محصولات",
+    "shipping": "هزینه بسته بندی و ارسال",
+    "tax": "مالیات %10",
+    "total": "جمع کل"
+  },
+  "checkout": {
+    "invoice": "صورتحساب",
+    "payment": "پرداخت",
+    "orderSummary": {
+      "title": "خلاصه سفارش",
+      "itemCount": "{{count}} محصول"
+    },
+    "paymentMethods": {
+      "title": "روش های پرداخت",
+      "online": {
+        "title": "آنلاین",
+        "desc": "پرداخت آنلاین از طریق درگاه شاپرک."
+      },
+      "cartToCart": {
+        "title": "کارت به کارت",
+        "desc": "پرداخت از طریق انتقال وجه."
+      },
+      "darMahal": {
+        "title": "پرداخت در محل",
+        "desc": "پرداخت وجه در محل هنگام دریافت محصول."
+      }
+    },
+    "userInfo": {
+      "title": "اطلاعات شما",
+      "fullName": {
+        "label": "نام و نام خانوادگی",
+        "placeholder": "نام خود را وارد کنید"
+      },
+      "phone": {
+        "label": "شماره همراه",
+        "placeholder": "شماره همراه خود را وارد کنید"
+      },
+      "province": {
+        "label": "استان",
+        "placeholder": "استان خود را انتخاب کنید"
+      },
+      "city": {
+        "label": "شهر",
+        "placeholder": "شهر خود را انتخاب کنید"
+      },
+      "address": {
+        "label": "آدرس",
+        "placeholder": "آدرس سکونت خود را وارد کنید"
+      },
+      "postalCode": {
+        "label": "کد پستی",
+        "placeholder": "کد پستی خود را وارد کنید"
+      },
+      "plate": {
+        "label": "پلاک",
+        "placeholder": "پلاک خود را وارد کنید"
+      }
+    },
+    "provinces": {
+      "khorasanrazavi": "خراسان رضوی",
+      "tehran": "تهران",
+      "esfahan": "اصفهان",
+      "ghom": "قوم",
+      "ardbil": "اردبیل"
+    },
+    "cities": {
+      "mashhad": "مشهد",
+      "torbat": "تربت حیدریه",
+      "nishabor": "نیشابور",
+      "kashmar": "کاشمر",
+      "tehran": "تهران",
+      "esfahan": "اصفهان",
+      "karaj": "کرج",
+      "ardbil": "اردبیل"
+    }
+  },
+  "account": {
+    "title": "حساب کاربری",
+    "edit": "ویرایش اطلاعات",
+    "ordersTitle": "سفارشات اخیر",
+    "noOrders": "هنوز سفارشی ثبت نشده است!",
+    "orderStatus": {
+      "sending": "درحال ارسال",
+      "sendingDesc": "سفارشات ارسال شده",
+      "delivered": "تحویل شده",
+      "deliveredDesc": "سفارشات تحویل داده شده",
+      "returned": "مرجوع شده",
+      "returnedDesc": "سفارشات مرجوع داده شده"
+    },
+    "allOrders": "همه سفارشات",
+    "items": "محصول",
+    "settings": {
+      "title": "تنظیمات حساب",
+      "changePhoto": "تغییر عکس",
+      "name": "نام",
+      "namePlaceholder": "نام نمایشی",
+      "email": "ایمیل",
+      "emailPlaceholder": "ایمیل شما",
+      "phone": "شماره همراه",
+      "phonePlaceholder": "شماره همراه شما",
+      "address": "آدرس",
+      "addressPlaceholder": "آدرس شما",
+      "saveChanges": "ذخیره تغییرات"
+    },
+    "logout": {
+      "title": "خروج از حساب کاربری",
+      "confirmation": "آیا مطمئن هستید که می خواهید از حساب کاربری خود خارج شوید؟",
+      "yes": "بله",
+      "no": "خیر"
+    }
+  },
+  "notfound": {
+    "title": "صفحه پیدا نشد",
+    "desc": "متاسفانه صفحه ای که به دنبال ان بودید وجود ندارد.",
+    "back": "صفحه اصلی"
   }
 }

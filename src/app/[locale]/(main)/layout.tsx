@@ -1,5 +1,3 @@
-
-import Header from '@/components/global/Header';
 import Footer from '@/components/global/Footer';
 import { Metadata } from 'next';
 
@@ -36,10 +34,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
-      <Header />
-      <div className=''>{children}</div>
+    <div>
+      {children}
       <Footer />
-    </>
+    </div>
   );
 }

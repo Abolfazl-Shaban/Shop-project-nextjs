@@ -1,18 +1,7 @@
-import { Metadata } from "next";
+import { redirect } from "next/navigation";
 
-export const metadata : Metadata = {
-    title: 'صفحه مورد نظر یافت نشد',
-    description: 'صفحه‌ای که به دنبال آن بودید پیدا نشد. لطفاً به صفحه اصلی بازگردید.',
-    robots: {
-      index: false,
-      follow: false, 
-    },
-  };
-  
 const NotFound = () => {
-    return ( <div className="w-full h-screen flex-c">
-        <span>404 Not Found</span>
-    </div> );
-}
- 
+  redirect('/notfound')
+};
+
 export default NotFound;

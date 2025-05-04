@@ -4,7 +4,10 @@ import { Product } from '../Product/Product.type';
 import { CalDiscount } from '@/app/utils/calDiscount';
 import { productDetail } from '@/app/data/mockData';
 import CartButton from './CartButton';
+import { useTranslation } from 'react-i18next';
 const CartItem = ({ product }: { product: Product }) => {
+  const { t, i18n } = useTranslation();
+
   return (
     <div className='flex w-full gap-4 border-b p-1 not-md:pb-8 lg:my-2 lg:rounded-xl lg:border lg:p-4'>
       <div>
@@ -25,9 +28,13 @@ const CartItem = ({ product }: { product: Product }) => {
 
       <div className='flex grow flex-col'>
         <div className='justify mt-auto flex flex-col'>
-          <p className='my-1 text-lg font-medium'>{product.name}</p>
+          <p className='my-1 text-lg font-medium'>
+            {i18n.language === 'en' ? product.Ename : product.name}
+          </p>
           <p className='text-dark-300 mt-1 text-xs'>
-            {productDetail.description}
+            {i18n.language === 'en'
+              ? productDetail.Edescription
+              : productDetail.description}
           </p>
         </div>
         <div className='mt-auto flex flex-wrap items-center gap-1 pt-2'>
@@ -46,7 +53,7 @@ const CartItem = ({ product }: { product: Product }) => {
             </p>
             <p className={`line text-lg font-semibold`}>
               {CalDiscount(product.price, product.discount).toLocaleString()}{' '}
-              <span className='text-sm font-medium'>تومان</span>
+              <span className='text-sm font-medium'>{t('global.toman')}</span>
             </p>
           </div>
         </div>

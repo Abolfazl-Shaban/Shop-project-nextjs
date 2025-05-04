@@ -1,54 +1,79 @@
 'use client';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ProductDetail } from '../Product/ProductDetails.type';
 import { Button } from '../ui/button';
 import CommentCard from './CommentCard';
 
 const ProductBody = ({ productDetails }: { productDetails: ProductDetail }) => {
+  const { t, i18n } = useTranslation();
   const [tab, setTab] = useState<'description' | 'specifications' | 'comments'>(
     'description',
   );
 
   return (
     <div className='mt-8'>
-      <div className='bg-primary-100/10 flex gap-2 items-center rounded-md p-2'>
+      <div className='bg-primary-100/10 flex items-center gap-2 rounded-md p-2'>
         <Button
           variant={null}
-          className={`${tab == 'description' ? 'bg-primary-100 text-white' : 'hover:bg-primary-100/65 hover:text-white'} rounded-md transition-all`}
+          className={`${
+            tab == 'description'
+              ? 'bg-primary-100 text-white'
+              : 'hover:bg-primary-100/65 hover:text-white'
+          } rounded-md transition-all`}
           onClick={() => setTab('description')}
         >
-          توضیحات
+          {t('product.description')}
         </Button>
         <Button
           variant={null}
-          className={`${tab == 'specifications' ? 'bg-primary-100 text-white' : 'hover:bg-primary-100/65 hover:text-white'} rounded-md transition-all`}
+          className={`${
+            tab == 'specifications'
+              ? 'bg-primary-100 text-white'
+              : 'hover:bg-primary-100/65 hover:text-white'
+          } rounded-md transition-all`}
           onClick={() => setTab('specifications')}
         >
-          مشخصات فنی
+          {t('product.specifications')}
         </Button>
         <Button
           variant={null}
-          className={`${tab == 'comments' ? 'bg-primary-100 text-white' : 'hover:bg-primary-100/65 hover:text-white'} rounded-md transition-all`}
+          className={`${
+            tab == 'comments'
+              ? 'bg-primary-100 text-white'
+              : 'hover:bg-primary-100/65 hover:text-white'
+          } rounded-md transition-all`}
           onClick={() => setTab('comments')}
         >
-          نظرات
+          {t('product.comments')}
         </Button>
       </div>
       <div>
-        {/* Desc */}
+        {/* Description */}
         <div className={`${tab != 'description' && 'hidden'} p-5`}>
-          <p className=' text-dark-300 text-sm'>{productDetails.description}</p>
+          <p className='text-dark-300 text-sm'>
+            {i18n.language === 'en'
+              ? productDetails.Edescription
+              : productDetails.description}
+          </p>
         </div>
-        {/* spec */}
-        <div className={`${tab != 'specifications' && 'hidden'} p-3 `}>
-          {productDetails.specifications.map((r,index) => <div className='bg-primary-50/5 rounded-lg p-4 flex flex-col my-4 gap-2' key={index}>
-                <p className='text-lg not-lg:text-base font-medium  text-dark-200'>{r.title}:</p>
-                <p className=' text-sm text-dark-300'>{r.value}</p>
-          </div> )}
+        {/* Specifications */}
+        <div className={`${tab != 'specifications' && 'hidden'} p-3`}>
+          {productDetails.specifications.map((r, index) => (
+            <div
+              className='bg-primary-50/5 my-4 flex flex-col gap-2 rounded-lg p-4'
+              key={index}
+            >
+              <p className='text-dark-200 text-lg font-medium not-lg:text-base'>
+                {i18n.language === 'en' ? t(r.Etitle) : t(r.title)}:
+              </p>
+              <p className='text-dark-300 text-sm'>{r.value}</p>
+            </div>
+          ))}
         </div>
-        {/* comments */}
+        {/* Comments */}
         <div className={`${tab != 'comments' && 'hidden'} p-3`}>
-         <CommentCard />
+          <CommentCard />
         </div>
       </div>
     </div>

@@ -1,11 +1,14 @@
+'use client';
 import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
 
 const CommentCard = () => {
+  const { t } = useTranslation();
   return (
-    <div className='flex my-2 p-2 rounded-2xl '>
+    <div className='my-2 flex rounded-2xl p-2'>
       <div className='w-[80px] not-lg:w-[70px]'>
         <Image
-        className='size-16 not-lg:size-14 rounded-full'
+          className='size-16 rounded-full not-lg:size-14'
           src={'/images/person1.jpg'}
           width={512}
           height={512}
@@ -14,8 +17,17 @@ const CommentCard = () => {
         />
       </div>
       <div className='grow'>
-            <p className='text-base font-medium'>سهیل احمدی <span className='text-xs text-dark-300 px-2'>1 ماه پیش</span></p>
-            <p className='text-dark-300 mt-3 text-sm'>خوش قیمت و به صرفه٬ پیشنهاد میکنم بخرید</p>
+        <p className='text-base font-medium'>
+          <span className=''>Soheil</span>
+          <span className='text-dark-300 absolute px-2 text-xs'>
+            {t('product.month-ago', {
+              value: '1',
+            })}
+          </span>
+        </p>
+        <p className='text-dark-300 mt-3 text-sm'>
+          خوش قیمت و به صرفه٬ پیشنهاد میکنم بخرید
+        </p>
       </div>
     </div>
   );

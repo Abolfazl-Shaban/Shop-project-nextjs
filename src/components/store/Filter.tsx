@@ -21,6 +21,7 @@ import { XIcon } from 'lucide-react';
 import Order from './Order';
 import { updateParams } from '@/app/utils/updateParams';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 const Filter = ({
   priceRnage,
@@ -43,6 +44,8 @@ const Filter = ({
   const [selectedBrands, setSelectedBrands] = useState<string[]>(brandsParams);
   const defaultRange = priceRnage!;
 
+  const { t, i18n } = useTranslation();
+
   const router = useRouter();
 
   const [priceRange, setPriceRange] = useState([
@@ -57,9 +60,9 @@ const Filter = ({
 
   return (
     <div className={cn(className)}>
-      <div className='relative flex h-[70px] items-center justify-between border-b p-4 text-sm font-medium'>
+      <div className='relative flex h-fit items-center justify-between border-b p-4 text-sm font-medium'>
         <p className='flex items-center gap-1'>
-          <LuSettings2 size={22} /> فیلترها
+          <LuSettings2 size={22} /> {t('shop.filter')}
         </p>
         <Button
           onClick={() => {
@@ -77,17 +80,17 @@ const Filter = ({
             priceRange[1] == defaultRange[1] &&
             !order
           }
-          className='cursor-pointer rounded-full border-zinc-100 bg-zinc-50 text-xs'
+          className='flex cursor-pointer items-center gap-2 rounded-full border-zinc-100 bg-zinc-50 text-xs'
         >
           <XIcon />
-          حذف همه
+          <p className='mt-0.5'>{t('shop.remove-all')}</p>
         </Button>
       </div>
       <div className='p-4'>
-        <p className='mb-2 text-sm font-medium'>دسته بندی</p>
+        <p className='mb-2 text-sm font-medium'>{t('shop.category')}</p>
         <div className='relative'>
           <Select
-            dir='rtl'
+            dir={i18n.language == 'en' ? 'ltr' : 'rtl'}
             onValueChange={(val) => {
               setCategory(val);
               updateParams('category', val, params, router);
@@ -95,15 +98,15 @@ const Filter = ({
             value={category}
           >
             <SelectTrigger className='w-full'>
-              <SelectValue placeholder='انتخاب دسته بندی' />
+              <SelectValue placeholder={t('shop.select-category')} />
             </SelectTrigger>
             <SelectContent className='w-full'>
               <SelectGroup>
-                <SelectLabel>دسته بندی ها</SelectLabel>
+                <SelectLabel>{t('shop.categories-title')}</SelectLabel>
                 {categories &&
                   categories.map((e) => (
                     <SelectItem className='' value={e.id} id={e.id} key={e.id}>
-                      {e.name}
+                      {i18n.language == 'en' ? e.Ename : e.name}
                     </SelectItem>
                   ))}
               </SelectGroup>
@@ -112,7 +115,7 @@ const Filter = ({
           {category && (
             <Button
               variant={'ghost'}
-              className='text-dark-300 absolute top-0 left-8 cursor-pointer p-3 text-xl font-light hover:bg-zinc-200/50'
+              className='text-dark-300 absolute end-8 top-0 cursor-pointer p-3 text-xl font-light hover:bg-zinc-200/50'
               onClick={() => {
                 setCategory('');
 
@@ -126,14 +129,14 @@ const Filter = ({
 
         <hr className='mx-auto my-4 w-5/6' />
 
-        <p className='mb-2 text-sm font-medium'>محدوده قیمت</p>
+        <p className='mb-2 text-sm font-medium'>{t('shop.price-range')}</p>
         <Slider
           className='text-red-400'
           min={defaultRange[0]}
           max={defaultRange[1]}
           value={priceRange}
           step={10000}
-          dir='rtl'
+          dir={i18n.language == 'en' ? 'ltr' : 'rtl'}
           onValueChange={(newValue) => {
             setPriceRange(newValue);
           }}
@@ -155,13 +158,13 @@ const Filter = ({
           }}
         />
         <p className='mt-2 text-center text-sm'>
-          {priceRange[0].toLocaleString()} تومان تا{' '}
-          {priceRange[1].toLocaleString()} تومان
+          {priceRange[0].toLocaleString()} {t('shop.filter-price-from')}{' '}
+          {priceRange[1].toLocaleString()} {t('shop.filter-price-to')}
         </p>
 
         <hr className='mx-auto my-4 w-5/6' />
 
-        <p className='mt-4 mb-2 text-sm font-medium'>برند</p>
+        <p className='mt-4 mb-2 text-sm font-medium'>{t('shop.brand')}</p>
         {brands &&
           brands.map((e) => (
             <div className='my-1 flex items-center gap-1' key={e.id}>
@@ -182,7 +185,7 @@ const Filter = ({
                 }}
                 className='text-primary-200'
               />
-              <span>{e.name}</span>
+              <span>{i18n.language == 'en' ? e.Ename : e.name}</span>
             </div>
           ))}
 

@@ -5,6 +5,7 @@ import { Button } from '../ui/button';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { updateParams } from '@/app/utils/updateParams';
+import { useTranslation } from 'react-i18next';
 
 const Order = ({
   className
@@ -15,13 +16,13 @@ const Order = ({
   const params = new URLSearchParams(searchParams.toString());
   const router = useRouter();
   const order = searchParams.get('order') ?? 'newest';
-  //   const [order, setOrder] = useState(searchParams.get('order') ?? 'popluar');
+  const {t} = useTranslation();
   return (
     <div className={cn(' flex w-full items-center gap-1 rounded-lg  ',className)}>
       <p className='flex items-center gap-1.5 text-sm font-medium'>
-        <LuLayers /> ترتیب:
+        <LuLayers size={18} /> {t('shop.sort')}:
       </p>
-      <div className='flex items-center gap-2 px-2'>
+      <div className='flex flex-wrap items-center gap-2 gap-y-0 px-2'>
         <Button 
           onClick={() => {
             if (order != 'newest') {
@@ -31,7 +32,7 @@ const Order = ({
           variant={null}
           className={`${order == 'newest' ? 'text-primary-300 font-medium' : 'font-normal'} cursor-pointer p-1`}
         >
-          جدیدترین
+          {t('shop.sorts.newest')}
         </Button>
         <Button
           onClick={() => {
@@ -42,7 +43,7 @@ const Order = ({
           variant={null}
           className={`${order == 'popluar' ? 'text-primary-300 font-medium' : 'font-normal'} cursor-pointer p-1`}
         >
-          محبوب‌ترین
+          {t('shop.sorts.popular')}
         </Button>
         <Button
           onClick={() => {
@@ -58,7 +59,7 @@ const Order = ({
           variant={null}
           className={`${order == 'highPrice' ? 'text-primary-300 font-medium' : 'font-normal'} cursor-pointer p-1`}
         >
-          گران‌ترین
+          {t('shop.sorts.expensive')}
         </Button>
         <Button
           onClick={() => {
@@ -74,7 +75,8 @@ const Order = ({
           variant={null}
           className={`${order == 'lowPrice' ? 'text-primary-300 font-medium' : 'font-normal'} cursor-pointer p-1`}
         >
-          ارزان‌ترین
+          
+          {t('shop.sorts.cheapest')}
         </Button>
       </div>
     </div>

@@ -1,12 +1,16 @@
+'use client';
 import { calculateCartTotals } from '@/app/utils/cartCalculations';
 import { CartItem } from '@/context/CartContext';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 export const CartSummary = ({
   cart,
 }: {
   cart: { getCartItems: () => CartItem[] };
 }) => {
+  const { t } = useTranslation();
+
   const { subtotal, discount, tax, total } = calculateCartTotals(
     cart.getCartItems(),
   );
@@ -37,28 +41,28 @@ export const CartSummary = ({
       </p>
       <p
         className={cn(
-          ` ${isTotal ? 'text-sm font-semibold' : 'text-xs'}`,
+          `${isTotal ? 'text-sm font-semibold' : 'text-xs'}`,
           valueClassName,
         )}
       >
-        {value.toLocaleString()} تومان
+        {value.toLocaleString()} {t('global.toman')}
       </p>
     </div>
   );
 
   return (
     <div className='flex flex-col gap-4'>
-      <SummaryRow label='قیمت محصولات' value={subtotal} />
+      <SummaryRow label={t('cart.subtotal')} value={subtotal} />
       {discount > 0 && (
         <SummaryRow
-          label='تخفیف'
+          label={t('global.discount')}
           value={discount}
           textClassName='text-red-500 font-medium'
-          valueClassName='text-red-500 font-semibold '
+          valueClassName='text-red-500 font-semibold'
         />
       )}
-      <SummaryRow label='مالیات %10' value={tax} textClassName='' />
-      <SummaryRow label='جمع کل' value={total} isTotal />
+      <SummaryRow label={t('cart.tax')} value={tax} />
+      <SummaryRow label={t('cart.total')} value={total} isTotal />
     </div>
   );
 };

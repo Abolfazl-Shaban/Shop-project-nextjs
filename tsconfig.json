@@ -28,6 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "constant/index.js"
-, "src/components/store/getRangePrice.tesc"  ],
+, "src/components/store/getRangePrice.tesc", "src/app/layout.tsx"  ],
   "exclude": ["node_modules"]
 }

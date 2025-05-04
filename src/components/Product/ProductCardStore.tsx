@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Image from 'next/image';
 import { Product } from './Product.type';
@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { Star } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/navigation';
 
 const ProductCardStore = ({
   product,
@@ -17,6 +18,7 @@ const ProductCardStore = ({
   className?: string;
 }) => {
   const { t, i18n } = useTranslation();
+  const router = useRouter();
   return (
     <div
       className={cn(
@@ -36,14 +38,16 @@ const ProductCardStore = ({
           width={512}
           height={512}
         />
-        <p className='flex-center absolute bottom-8 end-1/3 h-fit w-fit gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 text-sm not-md:-start-8 not-md:bottom-0 md:top-6/12 md:end-2'>
+        <p className='flex-center absolute end-1/3 bottom-8 h-fit w-fit gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 text-sm not-md:-start-8 not-md:bottom-0 md:end-2 md:top-6/12'>
           {product.rating}
           <Star fill='#FA8618' className='text-primary-100' size={24} />
         </p>
       </Link>
       <div className='flex h-full grow flex-col justify-center md:w-full'>
         <Link href={`/products/${product.id}`}>
-          <h2 className='text-lg font-normal'>{i18n.language == 'en' ? product.Ename : product.name}</h2>
+          <h2 className='text-lg font-normal'>
+            {i18n.language == 'en' ? product.Ename : product.name}
+          </h2>
         </Link>
         <p
           className={`${product.discount > 0 && ''} text-dark-100 line mt-4 text-lg`}
@@ -57,8 +61,9 @@ const ProductCardStore = ({
           <span className='line-through'>{product.price.toLocaleString()}</span>
           <span className='text-sm font-medium'> {t('global.toman')}</span>
         </p>
-        <Link href={`/products/${product.id}`} className='mt-auto ms-auto'>
+        <Link href={`/products/${product.id}`} className='ms-auto mt-auto'>
           <Button
+            onClick={() => router.push(`/products/${product.id}`)}
             variant={'outline'}
             className='hover:bg-primary-200 not-md:hidden hover:text-white'
           >
@@ -66,7 +71,7 @@ const ProductCardStore = ({
           </Button>
         </Link>
         {product.discount > 0 && (
-          <p className='absolute top-4 end-1 w-fit rounded-lg bg-red-500 p-0.5 px-1 text-sm text-white md:start-4'>
+          <p className='absolute end-1 top-4 w-fit rounded-lg bg-red-500 p-0.5 px-1 text-sm text-white md:start-4'>
             {product.discount}% {t('global.discount')}
           </p>
         )}

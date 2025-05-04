@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Image from 'next/image';
 import { Product } from './Product.type';
 import { Button } from '../ui/button';
@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { Star } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/navigation';
 
 const ProductCard = ({
   product,
@@ -15,7 +16,8 @@ const ProductCard = ({
   product: Product;
   className?: string;
 }) => {
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
+  const router = useRouter();
   return (
     <div
       className={cn(
@@ -35,7 +37,9 @@ const ProductCard = ({
           height={512}
         />
       </Link>
-      <h2 className='text-lg font-normal'>{i18n.language == 'en' ? product.Ename : product.name}</h2>
+      <h2 className='text-lg font-normal'>
+        {i18n.language == 'en' ? product.Ename : product.name}
+      </h2>
       <p
         className={`${(!product.discount || product.discount == 0) && 'hidden'} text-dark-100 line mt-1 text-lg`}
       >
@@ -53,19 +57,20 @@ const ProductCard = ({
         <span className='text-sm font-medium'> {t('global.toman')}</span>
       </p>
       <Button
+        onClick={() => router.push(`/products/${product.id}`)}
         variant={'outline'}
-        className='hover:bg-primary-200 mt-auto ms-auto hover:text-white'
+        className='hover:bg-primary-200 ms-auto mt-auto hover:text-white'
       >
         {t('global.view')}
       </Button>
       {product.discount > 0 && (
-        <p className='absolute top-4 start-4 w-fit rounded-lg bg-red-500 p-0.5 px-1 text-sm text-white'>
+        <p className='absolute start-4 top-4 w-fit rounded-lg bg-red-500 p-0.5 px-1 text-sm text-white'>
           {product.discount}% {t('global.discount')}
         </p>
       )}
 
       {product.rating && (
-        <p className='flex-center absolute top-6/12 end-2 gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 text-sm'>
+        <p className='flex-center absolute end-2 top-6/12 gap-1 rounded-full border border-zinc-100 bg-white p-1 px-2 text-sm'>
           {product.rating}
           <Star fill='#FA8618' className='text-primary-100' size={24} />
         </p>

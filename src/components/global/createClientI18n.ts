@@ -7,7 +7,7 @@ import fa from '../../i18n/locales/fa.json';
 export const createClientI18n = async (lng: string) => {
   await i18n.use(initReactI18next).init({
     lng,
-    fallbackLng: 'en',
+    fallbackLng: 'fa',
     resources: {
       en: { translation: en },
       fa: { translation: fa },

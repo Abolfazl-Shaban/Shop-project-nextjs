@@ -1,3 +1,5 @@
+
+
 export const navPaths = [
   {
     name: 'header.menu.main',
@@ -16,4 +18,4 @@ export const navPaths = [
     path: '/account',
   },
 ];
-export const SiteUrl = 'http://localhost:3000';
+export const SiteUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
